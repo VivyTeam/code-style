@@ -2,23 +2,18 @@
 
 ## Configuration steps
 
-1. Install the checkstyle-idea plugin in your IntelliJ IDE
+1. Clone the repository and run the install.sh file.
 
-2. Copy the config folder into your project root directory.
+2. Add this to your ` build.gradle ` file
+```
+apply plugin: 'checkstyle'
 
-3. add plugin : 'checkstyle'  (This will use the checkstyle.xml file available in the config directory by default)
-   checkstyle {
+    checkstyle {
+        config project.resources.text.fromUri('https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml')
         toolVersion = "6.0"
     }
     
-    to your build.gradle file : this will fail the build of the project if there are violations of the styles (Also, if the severity is set to error and not warning).
+``` 
     
-    ** specifying the version of the checkstyle is not mandatory (depends on the version of the checkstyle.xml file)
-4. File | Other Settings | Checkstyle  to add and select the checkstyle.xml as the configuration file.
+3. Install [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea)  and set the checkstyle to use file via File | Other Settings | Checkstyle
 
-5. Import the checkstyle.xml scheme in the config folder into the IDE scheme (to enabke direct reformating of code)  via : File | Editor | Code Style | Import The Scheme
-
-# Additional Resources
-
-- http://checkstyle.sourceforge.net/writingchecks.html
-- https://github.com/square/java-code-styles/blob/master/install.sh
