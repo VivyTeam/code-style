@@ -17,3 +17,6 @@ apply plugin: 'checkstyle'
     
 3. Install [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea)  and set the checkstyle to use file via File | Other Settings | Checkstyle
 
+
+
+Unable to apply changes : plugin won't be able to load 
