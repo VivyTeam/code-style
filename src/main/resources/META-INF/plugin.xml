@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>io.vivy.checkstyle</id>
+    <id>io.vivy.idea.checkstyle</id>
     <name>Vivy: Java CodeStyle</name>
     <vendor email="noreply@vivy.com" url="http://www.vivy.com">Vivy</vendor>
 
