@@ -1,16 +1,16 @@
-# vivy Java Code-CheckStyle
+# Vivy Java Code-CheckStyle
 
-This plugin helps to reformat existing codebase to adopted CodeStyle and work in conjuction with another plugin and settings as follows:
+This plugin helps to reformat existing codebase to adopted CodeStyle and work in conjunction with [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) and settings as follows:
 
 ## Configuration steps
 
-1. Add this to your main ` build.gradle ` file : This will fail build operation if there exists codestyles adherance error(s). 
+1. Add this to your main ` build.gradle ` file : This should fail build operation if there exists codestyles adherence error(s).
 ```
 apply plugin: 'checkstyle'
 
     checkstyle {
         config project.resources.text.fromUri('https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml')
-        toolVersion = "6.0"
+        toolVersion = "8.11"
     }
     
 ``` 
