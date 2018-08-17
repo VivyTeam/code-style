@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.intellij' version '0.3.5'
 }
 
-group 'com-uvita'
+group 'io.vivy'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8

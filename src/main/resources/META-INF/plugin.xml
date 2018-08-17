@@ -1,7 +1,7 @@
 <idea-plugin>
-    <id>com-uvita.vivy-plugin</id>
-    <name>Vivy-Java CodeStyle</name>
-    <vendor email="support@vivy.com" url="http://www.vivy.com">Uvita</vendor>
+    <id>io.vivy.checkstyle</id>
+    <name>Vivy: Java CodeStyle</name>
+    <vendor email="noreply@vivy.com" url="http://www.vivy.com">Vivy</vendor>
 
     <description><![CDATA[
     This Plugin serves the purpose of automating CodeStyle file addition to IntelliJ-Idea and it works
