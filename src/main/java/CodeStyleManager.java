@@ -1,3 +1,6 @@
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
+import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.PathManager;
 
 import java.io.File;
@@ -26,6 +29,7 @@ public class CodeStyleManager {
 
     private boolean createFolder(String path) {
         return new File(path).mkdirs();
+
     }
 
     private void checkForExistingCodestyles() {
@@ -41,6 +45,10 @@ public class CodeStyleManager {
             copyFile(sourceFile, targetPath);
         } catch (IOException e) {
             e.printStackTrace();
+            Notifications.Bus.notify(new Notification("io.vivy.idea.checkstyle",
+                    "CheckStyle File Reading Error",
+                    e.getMessage(),
+                    NotificationType.ERROR));
         }
 
     }
@@ -49,6 +57,10 @@ public class CodeStyleManager {
         Path targetPath = new File(targetDirectory + File.separator + sourceFile.getName())
                 .toPath();
         Files.copy(sourceFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+        Notifications.Bus.notify(new Notification("io.vivy.idea.checkstyle",
+                "Copying CheckStyle fike",
+                "CheckStyle file copied successfully to the IDE directory",
+                NotificationType.INFORMATION));
 
     }
 

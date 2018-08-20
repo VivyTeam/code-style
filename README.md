@@ -22,3 +22,7 @@ apply plugin: 'checkstyle'
 ## Building the Plugin
 
 Presently, a buildPlugin gradle operation should generate .jar file which can then be added to IntelliJ as a plugin.
+
+## Resource
+
+http://www.jetbrains.org/intellij/sdk/docs/welcome.html
