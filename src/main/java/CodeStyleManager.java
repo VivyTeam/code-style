@@ -2,7 +2,6 @@ import com.intellij.openapi.application.PathManager;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -17,9 +16,11 @@ public class CodeStyleManager {
 
     void sync() {
 
-        if(projectBasePath == null) return;
+        if (projectBasePath == null) {
+            return;
+        }
 
-            checkForExistingCodestyles();
+        checkForExistingCodestyles();
 
     }
 
@@ -32,22 +33,22 @@ public class CodeStyleManager {
         String configPath = PathManager.getConfigPath();
         createFolder(configPath + "/codestyles");
 
-        String sourceUrl = "https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml";
         String targetPath = configPath + "/codestyles";
+        ClassLoader classLoader = getClass().getClassLoader();
+        File sourceFile = new File(classLoader.getResource("file/checkstyle.xml").getFile());
+
         try {
-            copyFile(sourceUrl,targetPath);
-        } catch ( IOException e ) {
+            copyFile(sourceFile, targetPath);
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private static void copyFile(String sourceURL, String targetDirectory) throws IOException
-    {
-        URL url = new URL(sourceURL);
-        String fileName = sourceURL.substring(sourceURL.lastIndexOf('/') + 1, sourceURL.length());
-        Path targetPath = new File(targetDirectory + File.separator + fileName).toPath();
-        Files.copy(url.openStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+    private static void copyFile(File sourceFile, String targetDirectory) throws IOException {
+        Path targetPath = new File(targetDirectory + File.separator + sourceFile.getName())
+                .toPath();
+        Files.copy(sourceFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
     }
 

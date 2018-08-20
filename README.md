@@ -10,7 +10,7 @@ apply plugin: 'checkstyle'
 
     checkstyle {
         config project.resources.text.fromUri('https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml')
-        toolVersion = "8.11"
+        toolVersion = "6.0"
     }
     
 ``` 
