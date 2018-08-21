@@ -11,16 +11,18 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <projectConfigurable instance="settings.SettingsPage" />
     </extensions>
 
     <depends>com.intellij.modules.lang</depends>
-    <depends>CheckStyle-IDEA</depends>
+    <!--<depends>CheckStyle-IDEA</depends>-->
 
     <actions>
         <action id="codestyle.Sync" class="OnActionSync" text="Sync Code Style"
                 description="Add CodeStyle to IntelliJ">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <add-to-group group-id="RefactoringMenu" anchor="first"/>
         </action>
+
     </actions>
 
     <project-components>
