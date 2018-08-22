@@ -26,6 +26,7 @@
 
     <module name="TreeWalker">
         <module name="OuterTypeFilename"/>
+        <!--<module name="MethodParametersFormatingCheck"/>-->
         <module name="IllegalTokenText">
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
             <property name="format"
@@ -39,7 +40,7 @@
             <property name="allowNonPrintableEscapes" value="true"/>
         </module>
         <module name="LineLength">
-            <property name="max" value="100"/>
+            <property name="max" value="200"/>
             <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
         </module>
         <module name="AvoidStarImport"/>
@@ -174,7 +175,7 @@
                      value="GenericWhitespace ''{0}'' is not preceded with whitespace."/>
         </module>
         <module name="Indentation">
-            <property name="basicOffset" value="4"/>
+            <property name="basicOffset" value="2"/>
             <property name="braceAdjustment" value="0"/>
             <property name="caseIndent" value="4"/>
             <property name="throwsIndent" value="4"/>
@@ -183,14 +184,14 @@
         </module>
         <module name="AbbreviationAsWordInName">
             <property name="ignoreFinal" value="false"/>
-            <property name="allowedAbbreviationLength" value="1"/>
+            <property name="allowedAbbreviationLength" value="3"/>
         </module>
-        <module name="OverloadMethodsDeclarationOrder"/>
+        <!--<module name="OverloadMethodsDeclarationOrder"/>-->
         <module name="VariableDeclarationUsageDistance"/>
         <module name="CustomImportOrder">
-            <property name="sortImportsInGroupAlphabetically" value="true"/>
+            <property name="sortImportsInGroupAlphabetically" value="false"/>
             <property name="separateLineBetweenGroups" value="true"/>
-            <property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>
+            <!--<property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>-->
         </module>
         <module name="MethodParamPad"/>
         <module name="NoWhitespaceBefore">

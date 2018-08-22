@@ -25,18 +25,14 @@ public class SettingsPage implements Configurable {
 
     private final Project project;
 
-    private JPanel myGeneralPanel;
-    private JPanel myVivyPanel;
-
-    private JCheckBox enableVivyCodeStyleForProject;
+    JCheckBox enableVivyCodeStyleForProject = new JCheckBox("Enable VivyJava CodeStyle for this Project");
 
     private PropertiesComponent myPropertiesComponent;
 
     public SettingsPage(@NotNull Project project){
-
         this.project = project;
-
     }
+
 
     @Nls(capitalization = Nls.Capitalization.Title)
     @Override
@@ -48,45 +44,55 @@ public class SettingsPage implements Configurable {
     @Override
     public JComponent createComponent() {
 
-        initialSettings();
+        JPanel newPanel = new JPanel(new GridBagLayout());
 
-        //add a listener to uncheck all the boxes if plugin is deactivated
-        enableVivyCodeStyleForProject.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JCheckBox checkbox = (JCheckBox) e.getSource();
-                boolean selected = checkbox.getModel().isSelected();
-                myVivyPanel.setEnabled(selected);
-            }
-            }
-        );
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.insets = new Insets(5, 5, 5, 5);
 
-        myGeneralPanel = new JPanel(new BorderLayout());
-        JCheckBox enableCheckBox = new JCheckBox();
-        enableCheckBox.setText("Enable VivyJava CodeStyle for this Project");
-        myGeneralPanel.add(enableCheckBox);
-     return  myGeneralPanel;
+        // add components to the panel
+        constraints.gridx = 0;
+        constraints.gridx = 0;
+        newPanel.add(enableVivyCodeStyleForProject, constraints);
+
+        // set border for the panel
+        newPanel.setBorder(BorderFactory.createEtchedBorder());
+
+        return newPanel;
+
+//        initialSettings();
+
+//        //add a listener to uncheck all the boxes if plugin is deactivated
+//        enableVivyCodeStyleForProject.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                JCheckBox checkbox = (JCheckBox) e.getSource();
+//                boolean selected = checkbox.getModel().isSelected();
+//                myVivyPanel.setEnabled(selected);
+//            }
+//            }
+//        );
+//
+////        myGeneralPanel = new JPanel(new BorderLayout());
+////        JCheckBox enableCheckBox = new JCheckBox();
+////        enableCheckBox.setText("Enable VivyJava CodeStyle for this Project");
+////        myGeneralPanel.add(enableCheckBox);
+//     return  myGeneralPanel;
     }
 
     public void initialSettings(){
-        enableVivyCodeStyleForProject.setSelected(ProjectSettings.isEnabled(myPropertiesComponent, ProjectSettings.VivyJava_ENABLED_FOR_PROJECT));
+//        enableVivyCodeStyleForProject.setSelected(ProjectSettings.isEnabled(myPropertiesComponent, ProjectSettings.VivyJava_ENABLED_FOR_PROJECT));
 
     }
     @Override
     public boolean isModified() {
-        return enableVivyCodeStyleForProject.isSelected() != ProjectSettings.isEnabled(myPropertiesComponent,ProjectSettings.VivyJava_ENABLED_FOR_PROJECT);
+//        return enableVivyCodeStyleForProject.isSelected() != ProjectSettings.isEnabled(myPropertiesComponent,ProjectSettings.VivyJava_ENABLED_FOR_PROJECT);
+    return true;
     }
 
     @Override
     public void apply() throws ConfigurationException {
-        ProjectSettings.setEnabled(myPropertiesComponent,ProjectSettings.VivyJava_ENABLED_FOR_PROJECT, enableVivyCodeStyleForProject.isSelected());
+//        ProjectSettings.setEnabled(myPropertiesComponent,ProjectSettings.VivyJava_ENABLED_FOR_PROJECT, enableVivyCodeStyleForProject.isSelected());
 
-    }
-
-    private JPanel buildRuleFilePanel() {
-
-        final JPanel container = new JPanel(new BorderLayout());
-
-        return container;
     }
 }
