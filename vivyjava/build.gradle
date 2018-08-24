@@ -1,0 +1,8 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.3.5'
+}
+
+intellij {
+    version '2018.2.1'
+}
