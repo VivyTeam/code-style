@@ -1,2 +1,4 @@
 rootProject.name = 'vivy-plugin'
+include 'methodcheck'
+include 'vivyjava'
 
