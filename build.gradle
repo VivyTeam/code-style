@@ -2,8 +2,7 @@ plugins {
     id 'java'
 }
 
-
-group 'io.vivy'
+group 'com.github.oyewaleoyelami.code-style'
 version '1.0'
 
 repositories {
