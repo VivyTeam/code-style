@@ -5,7 +5,7 @@
 
 <!--
     Checkstyle configuration that checks the Google coding conventions from Google Java Style
-    that can be found at https://google.github.io/styleguide/javaguide.html.a
+    that can be found at https://google.github.io/styleguide/javaguide.html.
     Checkstyle is very configurable. Be sure to read the documentation at
     http://checkstyle.sf.net (or in your downloaded distribution).
     To completely disable a check, just comment it out or delete it from the file.
@@ -14,6 +14,8 @@
 
 <module name = "Checker">
     <property name="charset" value="UTF-8"/>
+
+    <property name="fileExtensions" value="java"/>
 
     <property name="severity" value="error"/>
 
@@ -24,7 +26,7 @@
         <property name="eachLine" value="true"/>
     </module>
 
-    <module name="VivyJava">
+    <module name="TreeWalker">
         <module name="OuterTypeFilename"/>
         <module name="io.vivy.checkstyle.custom.MethodParameterNumberCheck"/>
         <module name="IllegalTokenText">
@@ -110,6 +112,7 @@
         </module>
         <module name="SeparatorWrap">
             <property name="id" value="SeparatorWrapMethodRef"/>
+            <property name="tokens" value="METHOD_REF"/>
             <property name="option" value="nl"/>
         </module>
         <module name="PackageName">

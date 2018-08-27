@@ -6,12 +6,35 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
 
 1. Add this to your main ` build.gradle ` file : This should fail build operation if there exists codestyles adherence error(s).
 ```
-apply plugin: 'checkstyle'
+   allprojects {
+    apply plugin: 'checkstyle'
 
     checkstyle {
-        config project.resources.text.fromUri('https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml')
-        toolVersion = "6.0"
+               config project.resources.text.fromUri('https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml')
+               toolVersion = "8.12"
+           }
+
+    repositories {
+           jcenter()
+           maven { url 'https://jitpack.io'}
+       }
+
+    dependencies {
+
+               dependency 'com.puppycrawl.tools:checkstyle:8.12'
+               dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:enhance-SNAPSHOT'
     }
+
+   }
+
+   subprojects{
+
+    dependencies {
+        compile 'com.puppycrawl.tools:checkstyle'
+        checkstyle 'com.github.UvitaTeam.code-style:checkstyle-custom'
+
+    }
+   }
     
 ``` 
     

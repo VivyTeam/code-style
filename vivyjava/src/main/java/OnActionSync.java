@@ -18,8 +18,6 @@ public class OnActionSync extends AnAction {
     }
 
     CodeStyleScheme vivyJava = CodeStyleSchemes.getInstance().findPreferredScheme("VivyJava");
-//    System.out.println("Verdict " + vivyJava.isDefault() + "Name " + vivyJava.getName());
-
     new CodeStyleManager(project.getBasePath())
         .sync();
 

@@ -6,9 +6,9 @@ public class TestClassWithErrors {
      */
     public void randomValidMethod(
             String first,
-            String second,
-            String third,
-                                  String fourth
+                                       String second,
+                                         String third,
+                                         String fourth
     ){
 
         System.out.println("There are four parameters on the same line");
