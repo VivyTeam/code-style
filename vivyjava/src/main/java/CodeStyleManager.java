@@ -44,7 +44,7 @@ public class CodeStyleManager {
       copyFile(resourceAsStream, targetPath);
 
     } catch (Exception e) {
-      log("CheckStyle File Copy Error",e.getMessage());
+      log("CheckStyle.xml File Copy Error",e.getMessage());
     }
 
   }
