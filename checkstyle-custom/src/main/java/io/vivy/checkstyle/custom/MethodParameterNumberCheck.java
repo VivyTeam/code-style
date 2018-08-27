@@ -1,12 +1,12 @@
 package io.vivy.checkstyle.custom;
 
-import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
+import com.puppycrawl.tools.checkstyle.api.Check;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
-import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 
-public class MethodParameterNumberCheck extends AbstractCheck {
+
+public class MethodParameterNumberCheck extends Check {
 
   private static final String MSG_KEY = "Your Parameters should be one per line ";
 
@@ -14,7 +14,7 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
   private static final String RIGHT_PAREN_MSG_KEY = "Closing parenthesis for parameter listing should be on a new line ";
 
-  private static final int DEFAULT_MAX_PARAMETERS = 3;
+  private static final int DEFAULT_MAX_PARAMETERS = 2;
 
   private int max = DEFAULT_MAX_PARAMETERS;
 
@@ -35,7 +35,7 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
   @Override
   public int[] getRequiredTokens() {
-    return CommonUtil.EMPTY_INT_ARRAY;
+    return new int[0];
   }
 
   @Override

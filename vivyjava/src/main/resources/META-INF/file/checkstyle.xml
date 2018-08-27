@@ -5,14 +5,14 @@
 
 <!--
     Checkstyle configuration that checks the Google coding conventions from Google Java Style
-    that can be found at https://google.github.io/styleguide/javaguide.html.
+    that can be found at https://google.github.io/styleguide/javaguide.html.a
     Checkstyle is very configurable. Be sure to read the documentation at
     http://checkstyle.sf.net (or in your downloaded distribution).
     To completely disable a check, just comment it out or delete it from the file.
     Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
  -->
 
-<module name = "VivyJava">
+<module name = "Checker">
     <property name="charset" value="UTF-8"/>
 
     <property name="severity" value="error"/>
@@ -24,9 +24,9 @@
         <property name="eachLine" value="true"/>
     </module>
 
-    <module name="TreeWalker">
+    <module name="VivyJava">
         <module name="OuterTypeFilename"/>
-        <!--<module name="io.vivy.checkstyle.custom.MethodParameterNumberCheck"/>-->
+        <!--         <module name="io.vivy.checkstyle.custom.MethodParameterNumberCheck"/> -->
         <module name="IllegalTokenText">
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
             <property name="format"
@@ -110,7 +110,6 @@
         </module>
         <module name="SeparatorWrap">
             <property name="id" value="SeparatorWrapMethodRef"/>
-            <property name="tokens" value="METHOD_REF"/>
             <property name="option" value="nl"/>
         </module>
         <module name="PackageName">
@@ -175,7 +174,7 @@
                      value="GenericWhitespace ''{0}'' is not preceded with whitespace."/>
         </module>
         <module name="Indentation">
-            <property name="basicOffset" value="2"/>
+            <property name="basicOffset" value="4"/>
             <property name="braceAdjustment" value="0"/>
             <property name="caseIndent" value="4"/>
             <property name="throwsIndent" value="4"/>
@@ -184,7 +183,7 @@
         </module>
         <module name="AbbreviationAsWordInName">
             <property name="ignoreFinal" value="false"/>
-            <property name="allowedAbbreviationLength" value="3"/>
+            <property name="allowedAbbreviationLength" value="10"/>
         </module>
         <!--<module name="OverloadMethodsDeclarationOrder"/>-->
         <module name="VariableDeclarationUsageDistance"/>
