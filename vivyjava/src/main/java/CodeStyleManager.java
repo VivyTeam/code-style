@@ -9,6 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
+import static com.intellij.codeInsight.daemon.impl.FileStatusMap.log;
+
 
 public class CodeStyleManager {
 
@@ -41,9 +43,8 @@ public class CodeStyleManager {
     try (InputStream resourceAsStream = getClass().getResourceAsStream("/META-INF/file/checkstyle.xml")) {
       copyFile(resourceAsStream, targetPath);
 
-    } catch (Exception ee) {
-      ee.printStackTrace();
-
+    } catch (Exception e) {
+      log("CheckStyle File Copy Error",e.getMessage());
     }
 
   }
