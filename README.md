@@ -4,7 +4,7 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
 
 ## Configuration steps
 
-1. Add this to your main ` build.gradle ` file : This should fail build operation if there exists codestyles adherence error(s).
+1. Adapt your ` build.gradle ` file to the following structure : This should fail build operation if there exists codestyles adherence error(s).
 ```
    allprojects {
     apply plugin: 'checkstyle'
@@ -20,21 +20,19 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
        }
 
     dependencies {
-
                dependency 'com.puppycrawl.tools:checkstyle:8.12'
                dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:enhance-SNAPSHOT'
-    }
+         }
 
-   }
+     }
 
-   subprojects{
+   subprojects {
 
-    dependencies {
-        compile 'com.puppycrawl.tools:checkstyle'
-        checkstyle 'com.github.UvitaTeam.code-style:checkstyle-custom'
-
-    }
-   }
+        dependencies {
+            compile 'com.puppycrawl.tools:checkstyle'
+            checkstyle 'com.github.UvitaTeam.code-style:checkstyle-custom'
+          }
+       }
     
 ``` 
     
