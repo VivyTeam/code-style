@@ -1,12 +1,12 @@
 package io.vivy.checkstyle.custom;
 
-import com.puppycrawl.tools.checkstyle.api.Check;
+import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 
 
 
-public class MethodParameterNumberCheck extends Check {
+public class MethodParameterNumberCheck extends AbstractCheck {
 
   private static final String MSG_KEY = "Your Parameters should be one per line ";
 
@@ -14,7 +14,7 @@ public class MethodParameterNumberCheck extends Check {
 
   private static final String RIGHT_PAREN_MSG_KEY = "Closing parenthesis for parameter listing should be on a new line ";
 
-  private static final int DEFAULT_MAX_PARAMETERS = 2;
+  private static final int DEFAULT_MAX_PARAMETERS = 3;
 
   private int max = DEFAULT_MAX_PARAMETERS;
 
@@ -50,9 +50,11 @@ public class MethodParameterNumberCheck extends Check {
       final int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
 
-      DetailAST firstToken = params.findFirstToken(TokenTypes.PARAMETER_DEF);
-      DetailAST secondSibling = firstToken.getNextSibling();
       if (count > max) {
+
+        DetailAST firstToken = params.findFirstToken(TokenTypes.PARAMETER_DEF);
+        DetailAST secondSibling = firstToken.getNextSibling();
+
           //check if the first left parenthesis is not on the same line with the parameter listing
         if (leftParentToken.getLineNo() == firstToken.getLineNo()) {
           log(leftParentToken, LEFT_PAREN_MSG_KEY);

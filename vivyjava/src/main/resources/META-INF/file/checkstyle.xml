@@ -26,7 +26,7 @@
 
     <module name="VivyJava">
         <module name="OuterTypeFilename"/>
-        <!--         <module name="io.vivy.checkstyle.custom.MethodParameterNumberCheck"/> -->
+        <module name="io.vivy.checkstyle.custom.MethodParameterNumberCheck"/>
         <module name="IllegalTokenText">
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
             <property name="format"
