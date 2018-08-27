@@ -11,10 +11,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <projectConfigurable instance="settings.SettingsPage" />
     </extensions>
 
     <depends>com.intellij.modules.lang</depends>
-    <depends>CheckStyle-IDEA</depends>
+    <!--<depends>CheckStyle-IDEA</depends>-->
 
     <actions>
         <action id="codestyle.Sync" class="OnActionSync" text="Sync Code Style"
