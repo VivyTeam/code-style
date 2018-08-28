@@ -11,14 +11,13 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <projectConfigurable instance="settings.SettingsPage" />
     </extensions>
 
     <depends>com.intellij.modules.lang</depends>
-    <!--<depends>CheckStyle-IDEA</depends>-->
+    <depends>CheckStyle-IDEA</depends>
 
     <actions>
-        <action id="codestyle.Sync" class="OnActionSync" text="Sync Code Style"
+        <action id="codestyle.Sync" class="io.vivy.checkstyle.vivy.plugin.OnActionSync" text="Sync Code Style"
                 description="Add CodeStyle to IntelliJ">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
@@ -27,7 +26,7 @@
 
     <project-components>
         <component>
-            <implementation-class>OnProjectSync</implementation-class>
+            <implementation-class>io.vivy.checkstyle.vivy.plugin.OnProjectSync</implementation-class>
         </component>
     </project-components>
 </idea-plugin>

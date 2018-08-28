@@ -1,9 +1,6 @@
 
-group 'io.vivy'
-version '1.0'
+plugins {
+    id 'java'
+}
 
 sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}

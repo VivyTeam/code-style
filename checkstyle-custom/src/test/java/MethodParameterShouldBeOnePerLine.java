@@ -21,6 +21,7 @@ public class MethodParameterShouldBeOnePerLine {
         int numberOfErrors = checker.process(files);
         assertThat(numberOfErrors, is(0));
     }
+
     private Checker prepareCheckStyleChecker() throws CheckstyleException {
         Checker checker = new Checker();
         checker.setModuleClassLoader(Thread.currentThread().getContextClassLoader());

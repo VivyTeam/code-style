@@ -2,18 +2,32 @@
 group 'io.vivy'
 version '1.0'
 
-repositories {
-    mavenCentral()
+allprojects {
+
+    repositories {
+        mavenCentral()
+    }
+
 }
+
 
 subprojects {
     apply plugin: 'java'
 
     dependencies {
 
-        testCompile group: 'junit', name: 'junit', version: '4.12'
-        compile group: 'com.puppycrawl.tools', name: 'checkstyle', version: '8.12'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
+        testCompileOnly 'junit:junit:4.12'
+        testImplementation 'org.junit.jupiter:junit-jupiter-params:5.2.0'
+
+        testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.2.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+
+        compile 'com.puppycrawl.tools:checkstyle:8.12'
 
     }
 
+    test {
+        useJUnitPlatform()
+    }
 }

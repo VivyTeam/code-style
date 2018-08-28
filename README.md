@@ -10,7 +10,7 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
     apply plugin: 'checkstyle'
 
     checkstyle {
-               config project.resources.text.fromUri('https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml')
+               config project.resources.text.fromUri('https://raw.githubusercontent.com/UvitaTeam/code-style/master/vivyjava/src/main/resources/META-INF/file/checkstyle.xml')
                toolVersion = "8.12"
            }
 
