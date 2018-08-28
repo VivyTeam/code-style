@@ -39,7 +39,6 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
     @Override
     public void visitToken(DetailAST ast) {
-
         DetailAST leftParentToken = ast.findFirstToken(TokenTypes.LPAREN);
         DetailAST rightParentToken = ast.findFirstToken(TokenTypes.RPAREN);
 
