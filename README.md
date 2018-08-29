@@ -20,7 +20,6 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
        }
 
     dependencies {
-               dependency 'com.puppycrawl.tools:checkstyle:8.12'
                dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:enhance-SNAPSHOT'
          }
 
@@ -29,14 +28,13 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
    subprojects {
 
         dependencies {
-            compile 'com.puppycrawl.tools:checkstyle'
             checkstyle 'com.github.UvitaTeam.code-style:checkstyle-custom'
           }
        }
     
 ``` 
     
-2. This plugin requires [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) as a prerequisit. Download and install it, add and set the checkstyle to be used, using the checkstyle file (url in previous stey) via file via File | Other Settings | Checkstyle :: This is for real-time tracking of the coding style.
+2. This plugin requires [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) as a prerequisite. Download and install it, add and set the checkstyle to be used, using the checkstyle file (url in previous stey) via file via File | Other Settings | Checkstyle :: This is for real-time tracking of the coding style.
 
 3. Enable the Plugin : File | Editor | CodeStyle  and select VivyJava
 

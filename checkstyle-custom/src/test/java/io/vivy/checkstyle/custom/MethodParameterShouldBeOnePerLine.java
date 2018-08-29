@@ -1,7 +1,8 @@
+package io.vivy.checkstyle.custom;
+
 import com.puppycrawl.tools.checkstyle.Checker;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
-import io.vivy.checkstyle.custom.MethodParameterNumberCheck;
 import org.junit.Test;
 
 import java.io.File;
