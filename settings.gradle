@@ -1,2 +1,3 @@
-rootProject.name = 'vivy-plugin'
+include 'checkstyle-custom'
+include 'vivy-idea-plugin'
 

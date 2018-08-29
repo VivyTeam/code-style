@@ -4,21 +4,44 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
 
 ## Configuration steps
 
-1. Add this to your main ` build.gradle ` file : This should fail build operation if there exists codestyles adherence error(s).
+1. Adapt your ` build.gradle ` file to the following structure : This should fail build operation if there exists codestyles adherence error(s).
 ```
-apply plugin: 'checkstyle'
+   allprojects {
+    apply plugin: 'checkstyle'
 
     checkstyle {
-        config project.resources.text.fromUri('https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml')
-        toolVersion = "8.11"
-    }
+               config project.resources.text.fromUri('https://raw.githubusercontent.com/UvitaTeam/code-style/master/vivyjava/src/main/resources/META-INF/file/checkstyle.xml')
+               toolVersion = "8.12"
+           }
+
+    repositories {
+           jcenter()
+           maven { url 'https://jitpack.io'}
+       }
+
+    dependencies {
+               dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:enhance-SNAPSHOT'
+         }
+
+     }
+
+   subprojects {
+
+        dependencies {
+            checkstyle 'com.github.UvitaTeam.code-style:checkstyle-custom'
+          }
+       }
     
 ``` 
     
-2. This plugin requires [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) as a prerequisit. Download and install it, add and set the checkstyle to be used, using the checkstyle file (url in previous stey) via file via File | Other Settings | Checkstyle :: This is for real-time tracking of the coding style.
+2. This plugin requires [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) as a prerequisite. Download and install it, add and set the checkstyle to be used, using the checkstyle file (url in previous stey) via file via File | Other Settings | Checkstyle :: This is for real-time tracking of the coding style.
 
 3. Enable the Plugin : File | Editor | CodeStyle  and select VivyJava
 
 ## Building the Plugin
 
 Presently, a buildPlugin gradle operation should generate .jar file which can then be added to IntelliJ as a plugin.
+
+## Resource
+
+http://www.jetbrains.org/intellij/sdk/docs/welcome.html

@@ -1,19 +1,21 @@
 <?xml version="1.0"?>
-        <!DOCTYPE module PUBLIC
-                "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
-                "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
-        <!--
-            Checkstyle configuration that checks the Google coding conventions from Google Java Style
-            that can be found at https://google.github.io/styleguide/javaguide.html.
-            Checkstyle is very configurable. Be sure to read the documentation at
-            http://checkstyle.sf.net (or in your downloaded distribution).
-            To completely disable a check, just comment it out or delete it from the file.
-            Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
-         -->
+<!--
+    Checkstyle configuration that checks the Google coding conventions from Google Java Style
+    that can be found at https://google.github.io/styleguide/javaguide.html.
+    Checkstyle is very configurable. Be sure to read the documentation at
+    http://checkstyle.sf.net (or in your downloaded distribution).
+    To completely disable a check, just comment it out or delete it from the file.
+    Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
+ -->
 
 <module name = "VivyJava">
     <property name="charset" value="UTF-8"/>
+
+    <property name="fileExtensions" value="java"/>
 
     <property name="severity" value="error"/>
 
@@ -39,7 +41,7 @@
             <property name="allowNonPrintableEscapes" value="true"/>
         </module>
         <module name="LineLength">
-            <property name="max" value="100"/>
+            <property name="max" value="200"/>
             <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
         </module>
         <module name="AvoidStarImport"/>
@@ -60,6 +62,7 @@
         </module>
         <module name="RightCurly">
             <property name="id" value="RightCurlyAlone"/>
+            <property name="shouldStartLine" value="true"/>
             <property name="option" value="alone"/>
             <property name="tokens"
                       value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,
@@ -83,7 +86,11 @@
         <module name="UpperEll"/>
         <module name="ModifierOrder"/>
         <module name="EmptyLineSeparator">
-            <property name="allowNoEmptyLineBetweenFields" value="true"/>
+        <property name="allowNoEmptyLineBetweenFields" value="true"/>
+    </module>
+        <module name="EmptyLineSeparator">
+            <property name="tokens" value="VARIABLE_DEF"/>
+            <property name="allowNoEmptyLineBetweenFields" value="false"/>
         </module>
         <module name="SeparatorWrap">
             <property name="id" value="SeparatorWrapDot"/>
@@ -132,14 +139,14 @@
                      value="Parameter name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <!--<module name="LambdaParameterName">-->
-            <!--<property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>-->
-            <!--<message key="name.invalidPattern"-->
-                     <!--value="Lambda parameter name ''{0}'' must match pattern ''{1}''."/>-->
+        <!--<property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>-->
+        <!--<message key="name.invalidPattern"-->
+        <!--value="Lambda parameter name ''{0}'' must match pattern ''{1}''."/>-->
         <!--</module>-->
         <!--<module name="CatchParameterName">-->
-            <!--<property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>-->
-            <!--<message key="name.invalidPattern"-->
-                     <!--value="Catch parameter name ''{0}'' must match pattern ''{1}''."/>-->
+        <!--<property name="format" value="^[a-z]([a-z0-9][a-zA-Z0-9]*)?$"/>-->
+        <!--<message key="name.invalidPattern"-->
+        <!--value="Catch parameter name ''{0}'' must match pattern ''{1}''."/>-->
         <!--</module>-->
         <module name="LocalVariableName">
             <property name="tokens" value="VARIABLE_DEF"/>
@@ -183,16 +190,20 @@
         </module>
         <module name="AbbreviationAsWordInName">
             <property name="ignoreFinal" value="false"/>
-            <property name="allowedAbbreviationLength" value="1"/>
+            <property name="allowedAbbreviationLength" value="10"/>
         </module>
-        <module name="OverloadMethodsDeclarationOrder"/>
+        <!--<module name="OverloadMethodsDeclarationOrder"/>-->
         <module name="VariableDeclarationUsageDistance"/>
         <module name="CustomImportOrder">
-            <property name="sortImportsInGroupAlphabetically" value="true"/>
+            <property name="sortImportsInGroupAlphabetically" value="false"/>
             <property name="separateLineBetweenGroups" value="true"/>
-            <property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>
+            <!--<property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>-->
         </module>
-        <module name="MethodParamPad"/>
+        <module name="MethodParamPad">
+        <property name="tokens" value="METHOD_DEF, METHOD_CALL"/>
+        <property name="option" value="nospace"/>
+        <property name="allowLineBreaks" value="false"/>
+    </module>
         <module name="NoWhitespaceBefore">
             <property name="tokens"
                       value="COMMA, SEMI, POST_INC, POST_DEC, DOT, ELLIPSIS, METHOD_REF"/>
@@ -205,6 +216,7 @@
                       value="BAND, BOR, BSR, BXOR, DIV, EQUAL, GE, GT, LAND, LE, LITERAL_INSTANCEOF, LOR,
                     LT, MINUS, MOD, NOT_EQUAL, PLUS, QUESTION, SL, SR, STAR, METHOD_REF "/>
         </module>
+
         <module name="AnnotationLocation">
             <property name="id" value="AnnotationLocationMostCases"/>
             <property name="tokens"
@@ -212,8 +224,10 @@
         </module>
         <module name="AnnotationLocation">
             <property name="id" value="AnnotationLocationVariables"/>
-            <property name="tokens" value="VARIABLE_DEF"/>
-            <property name="allowSamelineMultipleAnnotations" value="true"/>
+            <property name="tokens" value="VARIABLE_DEF, CLASS_DEF, INTERFACE_DEF, METHOD_DEF, CTOR_DEF"/>
+            <property name="allowSamelineMultipleAnnotations" value="false"/>
+            <property name="allowSamelineSingleParameterlessAnnotation" value="false"/>
+            <property name="allowSamelineParameterizedAnnotation" value="false"/>
         </module>
         <module name="NonEmptyAtclauseDescription"/>
         <module name="JavadocTagContinuationIndentation"/>
@@ -245,7 +259,7 @@
             <!--<property name="ignoreInlineTags" value="false"/>-->
         </module>
         <!--<module name="EmptyCatchBlock">-->
-            <!--<property name="exceptionVariableName" value="expected"/>-->
+        <!--<property name="exceptionVariableName" value="expected"/>-->
         <!--</module>-->
         <!--<module name="CommentsIndentation"/>-->
     </module>

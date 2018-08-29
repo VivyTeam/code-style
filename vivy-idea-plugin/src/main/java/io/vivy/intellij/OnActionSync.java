@@ -1,3 +1,5 @@
+package io.vivy.intellij;
+
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
@@ -12,7 +14,7 @@ public class OnActionSync extends AnAction {
             return;
         }
         new CodeStyleManager(project.getBasePath())
-             .sync();
+                .sync();
     }
 
 }

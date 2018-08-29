@@ -1,3 +1,5 @@
+package io.vivy.intellij;
+
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
@@ -14,10 +16,12 @@ public class OnProjectSync implements ProjectComponent {
     }
 
     @Override
-    public void initComponent() {}
+    public void initComponent() {
+    }
 
     @Override
-    public void disposeComponent() {}
+    public void disposeComponent() {
+    }
 
     @Override
     @NotNull
@@ -31,5 +35,6 @@ public class OnProjectSync implements ProjectComponent {
     }
 
     @Override
-    public void projectClosed() {}
+    public void projectClosed() {
+    }
 }
