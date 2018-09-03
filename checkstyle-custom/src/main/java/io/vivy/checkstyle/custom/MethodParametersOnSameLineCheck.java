@@ -11,9 +11,9 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
-    private static final String MSG_KEY = "Number of arguments is not more than 2, definitions and parameters should stay on the same line";
+    private static final String MSG_KEY = "Number of arguments is not more than 3, definitions and parameters should stay on the same line";
 
-    private static final int DEFAULT_MAX_PARAMETERS = 2;
+    private static final int DEFAULT_MAX_PARAMETERS = 3;
 
     private int max = DEFAULT_MAX_PARAMETERS;
 
@@ -43,11 +43,14 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
             final int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
             if (count <= max) {
-                //check if the first left parenthesis is not on the same line with the parameter listing
-                if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
-                    log(leftParentToken, MSG_KEY);
+                String line = getLine(ast.getLineNo());
+                final int lineLength = CommonUtil.lengthExpandedTabs(line, line.length(), getTabWidth());
+                if (lineLength <= 160) {
+                    //check if the first left parenthesis is not on the same line with the parameter listing
+                    if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
+                        log(leftParentToken, MSG_KEY);
+                    }
                 }
-
 
             }
         }
