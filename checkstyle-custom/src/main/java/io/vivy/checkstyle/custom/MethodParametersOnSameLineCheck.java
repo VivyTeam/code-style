@@ -11,9 +11,9 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
-    private static final String MSG_KEY = "Number of arguments is not more than three, definitions and parameters should stay on the same line";
+    private static final String MSG_KEY = "Number of arguments is not more than 2, definitions and parameters should stay on the same line";
 
-    private static final int DEFAULT_MAX_PARAMETERS = 3;
+    private static final int DEFAULT_MAX_PARAMETERS = 2;
 
     private int max = DEFAULT_MAX_PARAMETERS;
 
