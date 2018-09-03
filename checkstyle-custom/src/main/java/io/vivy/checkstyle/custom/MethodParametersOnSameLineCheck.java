@@ -42,14 +42,13 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
             final DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
             final int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
-            if (count <= max) {
-                String line = getLine(ast.getLineNo());
-                final int lineLength = CommonUtil.lengthExpandedTabs(line, line.length(), getTabWidth());
-                if (lineLength <= 160) {
-                    //check if the first left parenthesis is not on the same line with the parameter listing
-                    if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
-                        log(leftParentToken, MSG_KEY);
-                    }
+            String line = getLine(ast.getLineNo());
+            final int lineLength = CommonUtil.lengthExpandedTabs(line, line.length(), getTabWidth());
+
+            if ((count <= max)  && (lineLength <= 160)) {
+                //check if the first left parenthesis is not on the same line with the parameter listing
+                if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
+                    log(leftParentToken, MSG_KEY);
                 }
 
             }
