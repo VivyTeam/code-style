@@ -1,3 +1,4 @@
+package io.vivy.checkstyle.custom;
 
 public class TestMethodParametersOnSameLineCheckErrors {
 

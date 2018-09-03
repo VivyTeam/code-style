@@ -15,11 +15,13 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
 
     @Override
     public int[] getDefaultTokens() {
+
         return getAcceptableTokens();
     }
 
     @Override
     public int[] getAcceptableTokens() {
+
         return new int[]{TokenTypes.METHOD_CALL, TokenTypes.CTOR_CALL};
     }
 
