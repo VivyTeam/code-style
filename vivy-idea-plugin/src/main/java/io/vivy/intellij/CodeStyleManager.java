@@ -55,15 +55,9 @@ public class CodeStyleManager {
             Path targetPath = new File(targetDirectory + File.separator + "checkstyle.xml").toPath();
 
             Files.copy(sourceURL, targetPath, StandardCopyOption.REPLACE_EXISTING);
-            Notifications.Bus.notify(new Notification("io.vivy.idea.checkstyle",
-                    "Copying checkstyle.xml file",
-                    "checkstyle.xml copied successfully to the IDE directory",
-                    NotificationType.INFORMATION));
+            Notifications.Bus.notify(new Notification("io.vivy.idea.checkstyle", "Copying checkstyle file", "File copied to IDE",NotificationType.INFORMATION));
         } catch (Exception e) {
-            Notifications.Bus.notify(new Notification("io.vivy.idea.checkstyle",
-                    "An Error occur while copying checkstyle.xml file",
-                    e.getMessage(),
-                    NotificationType.ERROR));
+            Notifications.Bus.notify(new Notification("io.vivy.idea.checkstyle", "Error occur while copying xml file", e.getMessage(), NotificationType.ERROR));
         }
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class MethodCallParenShouldMatch{
+public class MethodCallParenShouldMatch {
 
     @Test
     public void checkThatMethodCallParenMathes() throws Exception {

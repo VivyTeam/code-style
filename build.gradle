@@ -10,13 +10,14 @@ allprojects {
     apply plugin: 'checkstyle'
 
     checkstyle {
-        config project.resources.text.fromUri('https://raw.githubusercontent.com/UvitaTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
-        config project.resources.text.fromUri('https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml');
+//        config project.resources.text.fromUri('https://raw.githubusercontent.com/UvitaTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
+        config project.resources.text.fromUri('https://raw.githubusercontent.com/oyewaleoyelami/check/master/checkstyle.xml')
         toolVersion = "8.12"
     }
 
     repositories {
-        mavenCentral()
+        jcenter()
+        maven { url 'https://jitpack.io'}
     }
 
     dependencyManagement {
@@ -45,7 +46,7 @@ subprojects {
             testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
             testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
-//            checkstyle 'com.github.UvitaTeam.code-style:checkstyle-custom'
+            checkstyle 'com.github.UvitaTeam.code-style:checkstyle-custom'
         }
 
     test {

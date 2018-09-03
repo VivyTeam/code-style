@@ -1,7 +1,5 @@
 package io.vivy.checkstyle.custom;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
 import com.puppycrawl.tools.checkstyle.Checker;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
@@ -13,7 +11,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NoLineBreakAfterAssign{
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+public class NoLineBreakAfterAssign {
 
     @Test
     public void checkThatNoLineBreakAfterAssign() throws Exception {

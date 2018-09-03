@@ -5,8 +5,8 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 /*
-* This check ensures that there is no line break immediately after an assign literal
-*/
+ * This check ensures that there is no line break immediately after an assign literal
+ */
 
 
 public class NoLineBreakAfterAssignCheck extends AbstractCheck {
@@ -35,15 +35,14 @@ public class NoLineBreakAfterAssignCheck extends AbstractCheck {
             final String text = ast.getText();
             final int colNo = ast.getColumnNo();
             final int lineNo = ast.getLineNo();
-            final String currentLine = getLine(lineNo -1 );
+            final String currentLine = getLine(lineNo - 1);
 
-            if (CommonUtil.isBlank(currentLine.substring(colNo+1))) {
+            if (CommonUtil.isBlank(currentLine.substring(colNo + 1))) {
                 log(ast, MSG_KEY, text);
             }
 
         }
 
     }
-
 
 }

@@ -40,10 +40,6 @@
             <property name="allowByTailComment" value="true"/>
             <property name="allowNonPrintableEscapes" value="true"/>
         </module>
-        <module name="io.vivy.checkstyle.custom.MethodParameterNumberCheck"/>
-        <module name="io.vivy.checkstyle.custom.MethodCallParenMatchCheck"/>
-        <module name="io.vivy.checkstyle.custom.NoLineBreakAfterAssignCheck"/>
-        <module name="io.vivy.checkstyle.custom.MethodParametersOnSameLineCheck"/>
         <module name="LineLength">
             <property name="max" value="160"/>
             <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
