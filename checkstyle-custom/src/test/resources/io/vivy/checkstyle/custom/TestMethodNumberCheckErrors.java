@@ -1,5 +1,5 @@
 
-public class TestClassWithErrors {
+public class TestMethodNumberCheckErrors {
 
     /**
      * Method Definition without Error
@@ -11,7 +11,7 @@ public class TestClassWithErrors {
                                          String fourth
     ){
 
-        System.out.println("There are four parameters on the same line");
+        System.out.println("Violation if there are more than max:3 parameters in total \n and more than one on the same line");
     }
 
 }

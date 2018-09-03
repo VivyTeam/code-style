@@ -41,7 +41,7 @@
             <property name="allowNonPrintableEscapes" value="true"/>
         </module>
         <module name="LineLength">
-            <property name="max" value="200"/>
+            <property name="max" value="160"/>
             <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
         </module>
         <module name="AvoidStarImport"/>
@@ -54,6 +54,10 @@
         </module>
         <module name="NeedBraces"/>
         <module name="LeftCurly"/>
+        <!--<module name="LeftCurly">-->
+            <!--<property name="option" value="nl"/>-->
+            <!--<property name="tokens" value="LITERAL_IF"/>-->
+        <!--</module>-->
         <module name="RightCurly">
             <property name="id" value="RightCurlySame"/>
             <property name="tokens"
@@ -185,7 +189,7 @@
             <property name="braceAdjustment" value="0"/>
             <property name="caseIndent" value="4"/>
             <property name="throwsIndent" value="4"/>
-            <property name="lineWrappingIndentation" value="4"/>
+            <property name="lineWrappingIndentation" value="3"/>
             <property name="arrayInitIndent" value="4"/>
         </module>
         <module name="AbbreviationAsWordInName">
@@ -211,7 +215,7 @@
         </module>
         <module name="ParenPad"/>
         <module name="OperatorWrap">
-            <property name="option" value="NL"/>
+            <property name="option" value="EOL"/>
             <property name="tokens"
                       value="BAND, BOR, BSR, BXOR, DIV, EQUAL, GE, GT, LAND, LE, LITERAL_INSTANCEOF, LOR,
                     LT, MINUS, MOD, NOT_EQUAL, PLUS, QUESTION, SL, SR, STAR, METHOD_REF "/>
@@ -258,6 +262,7 @@
         <module name="SingleLineJavadoc">
             <!--<property name="ignoreInlineTags" value="false"/>-->
         </module>
+        <!--<module name="EmptyForInitializerPad"/>-->
         <!--<module name="EmptyCatchBlock">-->
         <!--<property name="exceptionVariableName" value="expected"/>-->
         <!--</module>-->

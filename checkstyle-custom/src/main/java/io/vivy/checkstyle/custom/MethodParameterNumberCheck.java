@@ -3,7 +3,11 @@ package io.vivy.checkstyle.custom;
 import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
+import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
+/*
+* This check ensures that arguments of a method or constructor  if more than three should start on a new line and each on a
+* separate line different from the definition */
 
 public class MethodParameterNumberCheck extends AbstractCheck {
 
@@ -17,11 +21,6 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
     private int max = DEFAULT_MAX_PARAMETERS;
 
-
-    private void setMax(int max) {
-        this.max = max;
-    }
-
     @Override
     public int[] getDefaultTokens() {
         return getAcceptableTokens();
@@ -29,12 +28,12 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
     @Override
     public int[] getAcceptableTokens() {
-        return new int[]{TokenTypes.METHOD_DEF, TokenTypes.CTOR_DEF};
+        return new int[]{TokenTypes.METHOD_DEF, TokenTypes.CTOR_DEF, TokenTypes.CTOR_CALL, TokenTypes.METHOD_CALL};
     }
 
     @Override
     public int[] getRequiredTokens() {
-        return new int[0];
+        return CommonUtil.EMPTY_INT_ARRAY;
     }
 
     @Override

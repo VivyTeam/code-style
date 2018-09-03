@@ -13,10 +13,10 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class MethodParameterShouldBeOnePerLine {
+public class MethodCallParenShouldMatch{
 
     @Test
-    public void checkForParametersOnDifferentLines() throws Exception {
+    public void checkThatMethodCallParenMathes() throws Exception {
         Checker checker = prepareCheckStyleChecker();
         List<File> files = prepareFilesToBeChecked();
         int numberOfErrors = checker.process(files);
@@ -33,14 +33,14 @@ public class MethodParameterShouldBeOnePerLine {
     private DefaultConfiguration prepareConfiguration() {
         DefaultConfiguration checks = new DefaultConfiguration("Checks");
         DefaultConfiguration treeWalker = new DefaultConfiguration("TreeWalker");
-        DefaultConfiguration parameterFormatting = new DefaultConfiguration(MethodParameterNumberCheck.class.getCanonicalName());
+        DefaultConfiguration parameterFormatting = new DefaultConfiguration(MethodCallParenMatchCheck.class.getCanonicalName());
         checks.addChild(treeWalker);
         treeWalker.addChild(parameterFormatting);
         return checks;
     }
 
     private List<File> prepareFilesToBeChecked() {
-        String testFileName = "TestMethodNumberCheckErrors.java";
+        String testFileName = "TestMethodCallParenMatchCheckErrors.java";
         URL testFileUrl = getClass().getResource(testFileName);
         File testFile = new File(testFileUrl.getFile());
         List<File> files = new ArrayList<File>();

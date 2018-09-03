@@ -1,8 +1,11 @@
 package io.vivy.checkstyle.custom;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 import com.puppycrawl.tools.checkstyle.Checker;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
+
 import org.junit.Test;
 
 import java.io.File;
@@ -10,13 +13,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
-public class MethodParameterShouldBeOnePerLine {
+public class MethodParametersShouldBeOnSameLine{
 
     @Test
-    public void checkForParametersOnDifferentLines() throws Exception {
+    public void checkForParametersOnSameLine() throws Exception {
         Checker checker = prepareCheckStyleChecker();
         List<File> files = prepareFilesToBeChecked();
         int numberOfErrors = checker.process(files);
@@ -33,14 +33,14 @@ public class MethodParameterShouldBeOnePerLine {
     private DefaultConfiguration prepareConfiguration() {
         DefaultConfiguration checks = new DefaultConfiguration("Checks");
         DefaultConfiguration treeWalker = new DefaultConfiguration("TreeWalker");
-        DefaultConfiguration parameterFormatting = new DefaultConfiguration(MethodParameterNumberCheck.class.getCanonicalName());
+        DefaultConfiguration parameterFormatting = new DefaultConfiguration(MethodParametersOnSameLineCheck.class.getCanonicalName());
         checks.addChild(treeWalker);
         treeWalker.addChild(parameterFormatting);
         return checks;
     }
 
-    private List<File> prepareFilesToBeChecked() {
-        String testFileName = "TestMethodNumberCheckErrors.java";
+    private java.util.List<java.io.File> prepareFilesToBeChecked() {
+        String testFileName = "TestMethodParametersOnSameLineCheckErrors.java";
         URL testFileUrl = getClass().getResource(testFileName);
         File testFile = new File(testFileUrl.getFile());
         List<File> files = new ArrayList<File>();
