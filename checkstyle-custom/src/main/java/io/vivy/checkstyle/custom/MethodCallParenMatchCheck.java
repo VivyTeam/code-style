@@ -39,7 +39,7 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             DetailAST rightParentToken = ast.getLastChild();
 
             if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
-                if (leftParentToken.getColumnNo() != rightParentToken.getColumnNo()) {
+                if (leftParentToken.getParent().getColumnNo() != rightParentToken.getColumnNo()) {
                     log(leftParentToken, MSG_KEY);
 
                 }

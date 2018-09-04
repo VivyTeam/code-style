@@ -1,18 +1,24 @@
 
-public class TestMethodCallParenMatchCheckErrors {
+public class TestMethodCallParenMatchCheckErrors{
 
     /**
      * Method Definition without Error
      */
-    public void NoBreakMethod(){
+    public void TestMethod(){
+
         doNothing(
-                "Nothing"
+           "Nothing"
         );
 
-      }
+    }
 
-     public void doNothing(String nothing){
+      new StringBuffer(
 
-     }
+    );
+
+
+    public void doNothing(String nothing){
+
+    }
 
 }
