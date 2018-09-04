@@ -10,15 +10,18 @@ public class TestMethodCallParenMatchCheckErrors{
            "Nothing"
         );
 
+        new StringBuffer(
+           System.out.println("Testing Method Parent")
+        );
+
     }
 
-      new StringBuffer(
 
-    );
+    public static String doNothing(String nothing){
 
-
-    public void doNothing(String nothing){
-
+        return new StringBuffer(
+           nothing.toUpperCase()
+        );
     }
 
 }

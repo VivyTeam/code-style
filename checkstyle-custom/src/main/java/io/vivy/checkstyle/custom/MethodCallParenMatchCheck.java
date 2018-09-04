@@ -10,8 +10,8 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 public class MethodCallParenMatchCheck extends AbstractCheck {
 
-    private static final String MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same" +
-       " indentation if on different lines";
+    private static final String MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
+       + " indentation if on different lines";
 
     @Override
     public int[] getDefaultTokens() {
@@ -35,13 +35,12 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
     @Override
     public void visitToken(DetailAST ast) {
         if (ast.getType() == TokenTypes.METHOD_CALL) {
-            DetailAST leftParentToken = ast.getFirstChild();
-            DetailAST rightParentToken = ast.getLastChild();
+            DetailAST leftParenToken = ast.getFirstChild();
+            DetailAST rightParenToken = ast.getLastChild();
 
-            if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
-                if (leftParentToken.getParent().getColumnNo() != rightParentToken.getColumnNo()) {
-                    log(leftParentToken, MSG_KEY);
-
+            if (leftParenToken.getLineNo() != rightParenToken.getLineNo()) {
+                if (leftParenToken.getColumnNo() != rightParenToken.getColumnNo()) {
+                    log(leftParenToken, MSG_KEY);
                 }
             }
         }
