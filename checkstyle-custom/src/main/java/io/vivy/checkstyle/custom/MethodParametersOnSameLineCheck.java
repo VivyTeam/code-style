@@ -11,9 +11,9 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
-    private static final String MSG_KEY = "Number of arguments is not more than 1, definitions and parameters should stay on the same line";
+    private static final String MSG_KEY = "Number of arguments is not more than 3, definitions and parameters should stay on the same line";
 
-    private static final int DEFAULT_MAX_PARAMETERS = 1;
+    private static final int DEFAULT_MAX_PARAMETERS = 3;
 
     private int max = DEFAULT_MAX_PARAMETERS;
 
@@ -37,15 +37,33 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
         DetailAST leftParentToken = ast.findFirstToken(TokenTypes.LPAREN);
         DetailAST rightParentToken = ast.findFirstToken(TokenTypes.RPAREN);
 
+        int totalLength = 0;
+
         if (ast.getType() == TokenTypes.METHOD_DEF || ast.getType() == TokenTypes.CTOR_DEF) {
 
             final DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
             final int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
-            String line = getLine(ast.getLineNo());
-            final int lineLength = CommonUtil.lengthExpandedTabs(line, line.length(), getTabWidth());
+            DetailAST methodName = ast.findFirstToken(TokenTypes.IDENT);
+            int methodNameLength = methodName.getText().length();
 
-            if ((count <= max)  && (lineLength <= 160)) {
+            totalLength = totalLength + methodNameLength;
+
+            DetailAST returnType = ast.getFirstChild().getNextSibling();
+            if (returnType.getFirstChild() != null) {
+                int returnTypeLength = returnType.getFirstChild().getText().length();
+                totalLength = totalLength + returnTypeLength;
+            }
+
+            if (ast.getFirstChild().getFirstChild() != null) {
+                totalLength = totalLength + getModifiersLength(ast.getFirstChild());
+            }
+
+            if (params.getFirstChild() != null) {
+                totalLength = totalLength + getParametersLength(params);
+            }
+
+            if ((count <= max) && ((totalLength + 2) <= 160)) {
                 //check if the first left parenthesis is not on the same line with the parameter listing
                 if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
                     log(leftParentToken, MSG_KEY);
@@ -56,5 +74,40 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
     }
 
+    public int getParametersLength(DetailAST ast) {
+        int parametersLength = 0;
+        int parametersCount = 0;
+
+        DetailAST firstChild = ast.getFirstChild();
+
+        parametersLength = firstChild.getText().length();
+
+        while (firstChild.getNextSibling() != null) {
+            DetailAST nextChild = firstChild.getNextSibling();
+            parametersLength = parametersLength + nextChild.getText().length();
+            firstChild = nextChild;
+            parametersCount = parametersCount + 1;
+        }
+
+        return (parametersLength + parametersCount);
+    }
+
+    public int getModifiersLength(DetailAST modifier) {
+        int modifierLength = 0;
+        int modifierCount = 0;
+
+        DetailAST firstModifier = modifier.getFirstChild();
+        modifierLength = modifierLength + firstModifier.getText().length();
+        modifierCount = modifierCount + 1;
+
+        while (firstModifier.getNextSibling() != null) {
+            DetailAST nextSibling = firstModifier.getNextSibling();
+            modifierCount = modifierCount + 1;
+            modifierLength = modifierLength + nextSibling.getText().length();
+            firstModifier = nextSibling;
+
+        }
+        return  modifierLength + modifierCount;
+    }
 
 }

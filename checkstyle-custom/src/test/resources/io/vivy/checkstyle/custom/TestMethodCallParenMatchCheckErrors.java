@@ -1,5 +1,5 @@
 
-public class TestMethodCallParenMatchCheckErrors{
+public class TestMethodCallParenMatchCheckErrors {
 
     /**
      * Method Definition without Error
@@ -14,6 +14,10 @@ public class TestMethodCallParenMatchCheckErrors{
            System.out.println("Testing Method Parent")
         );
 
+        TestMethodCallParenMatchCheckErrors.nothing(
+           4
+        );
+
     }
 
 
@@ -22,6 +26,10 @@ public class TestMethodCallParenMatchCheckErrors{
         return new StringBuffer(
            nothing.toUpperCase()
         );
+    }
+
+    public static void nothing( int a){
+
     }
 
 }
