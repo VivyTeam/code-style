@@ -2,11 +2,8 @@ package io.vivy.checkstyle.custom;
 
 public class TestNoLineBreakAfterAssignCheckErrors {
 
-    /**
-     * Method Definition without Error
-     */
-    public void NoBreakMethod(){
+    public void noBreakMethod() {
         String testString = "new line error";
-      }
+    }
 
 }

@@ -1,10 +1,7 @@
 
 public class TestMethodCallParenMatchCheckErrors {
 
-    /**
-     * Method Definition without Error
-     */
-    public void TestMethod(){
+    public void testMethod() {
 
         doNothing(
            "Nothing"
@@ -21,14 +18,14 @@ public class TestMethodCallParenMatchCheckErrors {
     }
 
 
-    public static String doNothing(String nothing){
+    public static String doNothing(String nothing) {
 
         return new StringBuffer(
            nothing.toUpperCase()
         );
     }
 
-    public static void nothing( int a){
+    public static void nothing(int a) {
 
     }
 

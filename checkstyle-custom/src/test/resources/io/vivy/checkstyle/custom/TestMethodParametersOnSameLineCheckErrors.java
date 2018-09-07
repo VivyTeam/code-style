@@ -1,4 +1,4 @@
-package io.vivy.checkstyle.custom;
+
 
 public class TestMethodParametersOnSameLineCheckErrors {
 
@@ -11,16 +11,16 @@ public class TestMethodParametersOnSameLineCheckErrors {
 
     }
 
-    public likeContsructor( String a, int b){
+    public likeContsructor(String a, int b) {
 
     }
 
-    public void likeMethod(String a , String b, String c){
+    public void likeMethod(String a,String b,String c){
 
 
     }
 
-    public static List<String> likeMethod(){
+    public static List<String> likeMethod() {
 
     }
 

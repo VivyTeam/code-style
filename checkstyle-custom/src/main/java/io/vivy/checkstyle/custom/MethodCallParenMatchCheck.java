@@ -27,19 +27,26 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
 
 
     @Override
-    public int[] getRequiredTokens()  {
+    public int[] getRequiredTokens() {
 
         return CommonUtil.EMPTY_INT_ARRAY;
     }
 
     @Override
     public void visitToken(DetailAST ast) {
-        if (ast.getType() == TokenTypes.METHOD_CALL) {
+        if ((ast.getType() == TokenTypes.METHOD_CALL) || (ast.getType() == TokenTypes.CTOR_CALL)) {
             DetailAST leftParenToken = ast.getFirstChild();
             DetailAST rightParenToken = ast.getLastChild();
 
             if (leftParenToken.getLineNo() != rightParenToken.getLineNo()) {
-                if (leftParenToken.getColumnNo() != rightParenToken.getColumnNo()) {
+                if (ast.findFirstToken(TokenTypes.DOT) != null) {
+                    leftParenToken = ast.getFirstChild().getFirstChild();
+
+                    if (leftParenToken.getColumnNo() != rightParenToken.getColumnNo()) {
+                        log(leftParenToken, MSG_KEY);
+                    }
+
+                } else if (leftParenToken.getColumnNo() != rightParenToken.getColumnNo()) {
                     log(leftParenToken, MSG_KEY);
                 }
             }
