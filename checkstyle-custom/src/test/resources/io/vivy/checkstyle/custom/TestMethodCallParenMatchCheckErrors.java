@@ -20,9 +20,17 @@ public class TestMethodCallParenMatchCheckErrors {
 
     public static String doNothing(String nothing) {
 
-        return new StringBuffer(
-           nothing.toUpperCase()
-        );
+        return nothing.concat(
+           "Nothing"
+               );
+    }
+
+
+    public static String doNothingSecond(String nothing) {
+
+        return new nothing.concat(
+           "Nothing"
+               );
     }
 
     public static void nothing(int a) {
