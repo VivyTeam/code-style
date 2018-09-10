@@ -60,9 +60,8 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
             }
 
             if (params.getFirstChild() != null) {
-                totalLength = totalLength + getParametersLength(params);
+                totalLength = totalLength + getParametersLength(params.getFirstChild());
             }
-
             if ((count <= max) && ((totalLength + 2) <= 185)) {
                 //check if the first left parenthesis is not on the same line with the parameter listing
                 if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
@@ -78,8 +77,7 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
         int parametersLength = 0;
         int parametersCount = 0;
 
-        DetailAST firstChild = ast.getFirstChild();
-
+        DetailAST firstChild = ast.getFirstChild().getNextSibling();
         parametersLength = firstChild.getText().length();
 
         while (firstChild.getNextSibling() != null) {

@@ -59,7 +59,6 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                             log(leftParenToken, MSG_KEY);
                         }
                     }
-
                 } else if (leftParenColumnNo != rightParenToken.getColumnNo()) {
                     log(leftParenToken, MSG_KEY);
                 }

@@ -7,10 +7,6 @@ public class TestMethodCallParenMatchCheckErrors {
            "Nothing"
         );
 
-        new StringBuffer(
-           System.out.println("Testing Method Parent")
-        );
-
         TestMethodCallParenMatchCheckErrors.nothing(
            4
         );
@@ -18,7 +14,7 @@ public class TestMethodCallParenMatchCheckErrors {
     }
 
 
-    public static String doNothing(String nothing) {
+    public static String doNothingOne(String nothing) {
 
         return nothing.concat(
            "Nothing"
@@ -45,4 +41,18 @@ public class TestMethodCallParenMatchCheckErrors {
 
     }
 
+    public static  String doNothingFourth(String nothing) {
+        return StringBuffer(
+           nothing.toUpperCase()
+        );
+    }
+
+    public static  String doNothingTest(String nothing) {
+       new  nothing.concat(
+           "Nothing"
+         );
+        return "nothing";
+    }
+
 }
+
