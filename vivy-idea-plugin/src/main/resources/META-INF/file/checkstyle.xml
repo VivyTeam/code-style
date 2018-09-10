@@ -44,6 +44,7 @@
         <module name="io.vivy.checkstyle.custom.MethodCallParenMatchCheck"/>
         <module name="io.vivy.checkstyle.custom.NoLineBreakAfterAssignCheck"/>
         <module name="io.vivy.checkstyle.custom.MethodParametersOnSameLineCheck"/>
+        <module name="io.vivy.checkstyle.custom.SingleArgsLambdaSameLineCheck" />
         <module name="LineLength">
             <property name="max" value="185"/>
             <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>

@@ -11,7 +11,6 @@ allprojects {
 
     checkstyle {
         config project.resources.text.fromUri('https://raw.githubusercontent.com/UvitaTeam/code-style/enhance/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
-        toolVersion = "8.12"
     }
 
     repositories {
