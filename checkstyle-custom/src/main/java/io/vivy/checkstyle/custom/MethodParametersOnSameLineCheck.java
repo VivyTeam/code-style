@@ -63,7 +63,7 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
                 totalLength = totalLength + getParametersLength(params);
             }
 
-            if ((count <= max) && ((totalLength + 2) <= 160)) {
+            if ((count <= max) && ((totalLength + 2) <= 185)) {
                 //check if the first left parenthesis is not on the same line with the parameter listing
                 if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
                     log(leftParentToken, MSG_KEY);
