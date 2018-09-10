@@ -22,16 +22,9 @@ public class TestMethodCallParenMatchCheckErrors {
 
         return nothing.concat(
            "Nothing"
-               );
+        );
     }
 
-
-    public static String doNothingSecond(String nothing) {
-
-        return new nothing.concat(
-           "Nothing"
-               );
-    }
 
     public static void nothing(int a) {
 

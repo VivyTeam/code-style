@@ -12,6 +12,8 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
        + " indentation if on different lines";
+    private static final String RETURN_MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
+       + " indentation with the return keyword since they are on different lines";
 
     @Override
     public int[] getDefaultTokens() {
@@ -39,14 +41,23 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             DetailAST rightParenToken = ast.getLastChild();
 
             if (leftParenToken.getLineNo() != rightParenToken.getLineNo()) {
-                if (ast.findFirstToken(TokenTypes.DOT) != null) {
-                    leftParenToken = ast.getFirstChild().getFirstChild();
+                int leftParenColumnNo = leftParenToken.getColumnNo();
+                String lineText = getLine(leftParenToken.getLineNo() - 1);
 
-                    if (leftParenToken.getColumnNo() != rightParenToken.getColumnNo()) {
+                if (lineText.contains("return")) {
+                    leftParenColumnNo = lineText.indexOf("return");
+                    if (leftParenColumnNo != rightParenToken.getColumnNo()) {
+                        log(leftParenToken, RETURN_MSG_KEY);
+                    }
+                } else if (ast.findFirstToken(TokenTypes.DOT) != null) {
+                    leftParenToken = ast.getFirstChild().getFirstChild();
+                    leftParenColumnNo = leftParenToken.getColumnNo();
+
+                    if (leftParenColumnNo != rightParenToken.getColumnNo()) {
                         log(leftParenToken, MSG_KEY);
                     }
 
-                } else if (leftParenToken.getColumnNo() != rightParenToken.getColumnNo()) {
+                } else if (leftParenColumnNo != rightParenToken.getColumnNo()) {
                     log(leftParenToken, MSG_KEY);
                 }
             }
