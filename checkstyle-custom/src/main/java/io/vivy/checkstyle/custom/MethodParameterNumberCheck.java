@@ -46,7 +46,7 @@ public class MethodParameterNumberCheck extends AbstractCheck {
             final DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
             final int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
-            if (count > max) {
+            if (count >= max) {
 
                 DetailAST firstToken = params.findFirstToken(TokenTypes.PARAMETER_DEF);
                 DetailAST secondSibling = firstToken.getNextSibling();
