@@ -6,12 +6,19 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 /*
-* This checks ensures that every lambda operation with single or no argument starts on the same line as its call
+* This checks ensures that every lambda operation with single or no argument starts on the same line as its call.
+*
+* The comment approach uses argument(s) counts but the present checkstyle API throws null pointer if the argument is not
+* surrounded by ().
+*
+* The approach assumes that the EXPR will be the second child of a lambda token only if there is only one argument else
+* this check will ignore
 * */
 
 public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
-    private static final String MSG_KEY = "Single Argument Lambda Call should start on the same line. ";
+    private static final String MSG_KEY = "Single Argument Lambda expression should start on the same line, No line break immediately"
+       + "after the  lambda sysmbol";
 
     @Override
     public int[] getDefaultTokens() {
@@ -33,20 +40,31 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
     @Override
     public void visitToken(DetailAST ast) {
         if (ast.getType() == TokenTypes.LAMBDA) {
-            DetailAST arguments = ast.findFirstToken(TokenTypes.PARAMETERS);
-            final int count = arguments.getChildCount(TokenTypes.PARAMETER_DEF);
 
-            if (count <= 1) {
-                int columnNo = ast.getColumnNo();
-                final int lineNo = ast.getLineNo();
-                final String currentLine = getLine(lineNo - 1);
+            DetailAST firstChild = ast.getFirstChild();
+            DetailAST secondChild = firstChild.getNextSibling();
 
-                if (CommonUtil.isBlank(currentLine.substring(columnNo + 2))) {
+            if ((secondChild != null) && (secondChild.getText() == "EXPR")) {
+                if (firstChild.getLineNo() != secondChild.getLineNo()) {
                     log(ast, MSG_KEY);
                 }
-
-
             }
+//            System.out.println("Outcome : " + child.getText());
+//            DetailAST arguments = ast.findFirstToken(TokenTypes.EXPR);
+//            final int count = arguments.getChildCount(TokenTypes.PARAMETER_DEF);
+
+//            System.out.println("Parameter count: " + count);
+//            if (count <= 1) {
+//                int columnNo = ast.getColumnNo();
+//                final int lineNo = ast.getLineNo();
+//                final String currentLine = getLine(lineNo - 1);
+//
+//                if (CommonUtil.isBlank(currentLine.substring(columnNo + 2))) {
+//                    log(ast, MSG_KEY);
+//                }
+//
+//
+//            }
         }
 
 

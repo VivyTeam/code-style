@@ -18,20 +18,17 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
 
     @Override
     public int[] getDefaultTokens() {
-
         return getAcceptableTokens();
     }
 
     @Override
     public int[] getAcceptableTokens() {
-
-        return new int[]{TokenTypes.METHOD_CALL, TokenTypes.CTOR_CALL, TokenTypes.LITERAL_RETURN, TokenTypes.METHOD_DEF};
+        return new int[]{TokenTypes.METHOD_CALL, TokenTypes.CTOR_CALL, TokenTypes.METHOD_DEF};
     }
 
 
     @Override
     public int[] getRequiredTokens() {
-
         return CommonUtil.EMPTY_INT_ARRAY;
     }
 

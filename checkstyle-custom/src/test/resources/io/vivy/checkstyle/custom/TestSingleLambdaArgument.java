@@ -1,11 +1,10 @@
+package io.vivy.checkstyle.custom;
 
+public class TestSingleLambdaArgument {
 
-public class TestSingleLambdaArguement {
-
-    public  void testMethod(){
-
-        (it) -> it.delayElements(
-              Duration.ofMillis(200)
+    public  void testMethod() {
+        it -> it.delayElements(
+             Duration.ofMillis(200)
            )
 
     }

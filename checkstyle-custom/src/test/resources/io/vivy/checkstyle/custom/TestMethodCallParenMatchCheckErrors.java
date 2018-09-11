@@ -1,3 +1,4 @@
+package io.vivy.checkstyle.custom;
 
 public class TestMethodCallParenMatchCheckErrors {
 
@@ -47,11 +48,10 @@ public class TestMethodCallParenMatchCheckErrors {
         );
     }
 
-    public static  String doNothingTest(String nothing) {
-       new  nothing.concat(
+    public static doNothingTest(String nothing) {
+       new nothing.concat(
            "Nothing"
-         );
-        return "nothing";
+            );
     }
 
 }
