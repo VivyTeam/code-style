@@ -51,7 +51,7 @@ public class TestMethodCallParenMatchCheckErrors {
     public static doNothingTest(String nothing) {
        new nothing.concat(
            "Nothing"
-            );
+           );
     }
 
 }

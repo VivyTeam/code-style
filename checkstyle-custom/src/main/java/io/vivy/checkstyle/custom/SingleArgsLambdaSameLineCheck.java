@@ -18,7 +18,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Single Argument Lambda expression should start on the same line, No line break immediately"
-       + " after the lambda sysmbol";
+       + " after the lambda sign";
 
     @Override
     public int[] getDefaultTokens() {
@@ -45,11 +45,14 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
             DetailAST secondChild = firstChild.getNextSibling();
 
             if ((secondChild != null) && (secondChild.getText() == "EXPR")) {
-                if (firstChild.getLineNo() != secondChild.getFirstChild().getLineNo()) {
+                int columnNo = ast.getColumnNo();
+                final int lineNo = ast.getLineNo();
+                final String currentLine = getLine(lineNo - 1);
+                if (CommonUtil.isBlank(currentLine.substring(columnNo + 2))) {
                     log(ast, MSG_KEY);
                 }
             }
-//            System.out.println("Outcome : " + child.getText());
+//            System.out.println("Outcome : " + secondChild.getText());
 //            DetailAST arguments = ast.findFirstToken(TokenTypes.EXPR);
 //            final int count = arguments.getChildCount(TokenTypes.PARAMETER_DEF);
 
