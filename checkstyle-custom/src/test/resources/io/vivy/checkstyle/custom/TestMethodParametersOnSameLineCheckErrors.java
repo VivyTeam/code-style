@@ -1,6 +1,6 @@
 
 
-public class TestMethodParametersOnSameLineCheckErrors {
+public class TestMethodParametersOnSameLineCheckErrors{
 
     public static String checkSameLineMethod(String first, String second, String third){
 
@@ -21,6 +21,17 @@ public class TestMethodParametersOnSameLineCheckErrors {
     }
 
     public static List<String> likeMethod() {
+
+    }
+
+    public Mono<ResponseEntity> findAll(
+       @AuthenticationPrincipal(errorOnInvalidType = true) VivyUser vivyUser,
+       @RequestParam(required = false, name = "dateTo") String dateToString) {
+
+    }
+
+
+    public Mono<ResponseEntity> findAll(VivyUser vivyUser, @RequestParam(required = false, name = "dateTo") String dateToString){
 
     }
 

@@ -37,75 +37,34 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
         DetailAST leftParentToken = ast.findFirstToken(TokenTypes.LPAREN);
         DetailAST rightParentToken = ast.findFirstToken(TokenTypes.RPAREN);
 
-        int totalLength = 0;
-
         if (ast.getType() == TokenTypes.METHOD_DEF || ast.getType() == TokenTypes.CTOR_DEF) {
 
             final DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
             final int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
-            DetailAST methodName = ast.findFirstToken(TokenTypes.IDENT);
-            int methodNameLength = methodName.getText().length();
+            if (count < max) {
+                int methodDefLine = leftParentToken.getLineNo() - 1;
+                int closingParenLineNo = rightParentToken.getLineNo() - 1;
+                int currentLineNo = methodDefLine;
+                int totalLength = 0;
 
-            totalLength = totalLength + methodNameLength;
+                while (currentLineNo <= closingParenLineNo) {
+                    final String currentLine = getLine(currentLineNo); // -1
+                    System.out.println("Line No: " + currentLineNo + " Line Text: " + currentLine.trim());
+                    int currentLineLength = currentLine.trim().length();
 
-            DetailAST returnType = ast.getFirstChild().getNextSibling();
-            if (returnType.getFirstChild() != null) {
-                int returnTypeLength = returnType.getFirstChild().getText().length();
-                totalLength = totalLength + returnTypeLength;
-            }
+                    totalLength = totalLength + currentLineLength;
+                    currentLineNo = currentLineNo + 1;
 
-            if (ast.getFirstChild().getFirstChild() != null) {
-                totalLength = totalLength + getModifiersLength(ast.getFirstChild());
-            }
-
-            if (params.getFirstChild() != null) {
-                totalLength = totalLength + getParametersLength(params.getFirstChild());
-            }
-            if ((count < max) && ((totalLength + 2) <= 185)) {
-                //check if the first left parenthesis is not on the same line with the parameter listing
-                if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
-                    log(leftParentToken, MSG_KEY);
                 }
 
+                if ((leftParentToken.getLineNo() != rightParentToken.getLineNo()) && (totalLength <= 160)) {
+                    log(leftParentToken, MSG_KEY);
+
+                }
             }
         }
 
-    }
-
-    public int getParametersLength(DetailAST ast) {
-        int parametersLength = 0;
-        int parametersCount = 0;
-
-        DetailAST firstChild = ast.getFirstChild().getNextSibling();
-        parametersLength = firstChild.getText().length();
-
-        while (firstChild.getNextSibling() != null) {
-            DetailAST nextChild = firstChild.getNextSibling();
-            parametersLength = parametersLength + nextChild.getText().length();
-            firstChild = nextChild;
-            parametersCount = parametersCount + 1;
-        }
-
-        return (parametersLength + parametersCount);
-    }
-
-    public int getModifiersLength(DetailAST modifier) {
-        int modifierLength = 0;
-        int modifierCount = 0;
-
-        DetailAST firstModifier = modifier.getFirstChild();
-        modifierLength = modifierLength + firstModifier.getText().length();
-        modifierCount = modifierCount + 1;
-
-        while (firstModifier.getNextSibling() != null) {
-            DetailAST nextSibling = firstModifier.getNextSibling();
-            modifierCount = modifierCount + 1;
-            modifierLength = modifierLength + nextSibling.getText().length();
-            firstModifier = nextSibling;
-
-        }
-        return  modifierLength + modifierCount;
     }
 
 }
