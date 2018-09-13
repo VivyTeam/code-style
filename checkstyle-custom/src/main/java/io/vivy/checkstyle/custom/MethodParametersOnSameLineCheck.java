@@ -49,8 +49,7 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
                 int totalLength = 0;
 
                 while (currentLineNo <= closingParenLineNo) {
-                    final String currentLine = getLine(currentLineNo); // -1
-                    System.out.println("Line No: " + currentLineNo + " Line Text: " + currentLine.trim());
+                    final String currentLine = getLine(currentLineNo);
                     int currentLineLength = currentLine.trim().length();
 
                     totalLength = totalLength + currentLineLength;
