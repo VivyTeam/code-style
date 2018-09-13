@@ -13,6 +13,8 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Number of arguments is not more than 3, definitions and parameters should stay on the same line";
 
+    private static final String NL_MSG_KEY = "The closing parenthethis and left curly should be on a new line.";
+
     private static final int DEFAULT_MAX_PARAMETERS = 3;
 
     private int max = DEFAULT_MAX_PARAMETERS;
@@ -57,11 +59,21 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
                 }
 
-                if ((leftParentToken.getLineNo() != rightParentToken.getLineNo()) && (totalLength <= 160)) {
-                    log(leftParentToken, MSG_KEY);
+                if (leftParentToken.getLineNo() != rightParentToken.getLineNo()) {
+                    if (totalLength <= 160) {
+                        log(leftParentToken, MSG_KEY);
+                    }
+
+                    String rightParenLine = getLine(rightParentToken.getLineNo() - 1);
+                    if (!CommonUtil.isBlank(rightParenLine.substring(0,rightParentToken.getColumnNo()))) {
+                        log(leftParentToken, NL_MSG_KEY);
+                    }
 
                 }
+
+
             }
+
         }
 
     }

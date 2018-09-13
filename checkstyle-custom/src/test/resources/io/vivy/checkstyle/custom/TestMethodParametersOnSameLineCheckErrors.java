@@ -26,7 +26,8 @@ public class TestMethodParametersOnSameLineCheckErrors{
 
     public Mono<ResponseEntity> findAll(
        @AuthenticationPrincipal(errorOnInvalidType = true) VivyUser vivyUser,
-       @RequestParam(required = false, name = "dateTo") String dateToString) {
+       @RequestParam(required = false, name = "dateTo") String dateToString
+    ) {
 
     }
 
