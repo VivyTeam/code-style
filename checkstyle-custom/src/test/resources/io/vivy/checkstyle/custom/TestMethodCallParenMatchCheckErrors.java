@@ -54,5 +54,21 @@ public class TestMethodCallParenMatchCheckErrors {
         );
     }
 
+    public void testClosedCurly() {
+
+        accessTokenConverter.setUserTokenConverter(new DefaultUserAuthenticationConverter() {
+            @Override
+            public Authentication extractAuthentication(java.util.Map<String, ?> map) {
+                OAuthUser user = new OAuthUser(
+                   OAuthUser.Type.valueOf(((String) map.get("stype")).toUpperCase()),
+                   (String) map.get("id")
+                );
+                PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(user, null);
+                authentication.setAuthenticated(true);
+                return authentication;
+                                                       }
+        });
+    }
+
 }
 

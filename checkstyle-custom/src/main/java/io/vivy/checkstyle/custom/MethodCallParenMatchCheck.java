@@ -11,10 +11,10 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 public class MethodCallParenMatchCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
-       + " indentation if on different lines";
+        + " indentation if on different lines";
 
     private static final String RETURN_MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
-       + " indentation with the return keyword since they are on different lines";
+        + " indentation with the return keyword since they are on different lines";
 
     @Override
     public int[] getDefaultTokens() {
@@ -38,25 +38,33 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             DetailAST leftParenToken = ast.getFirstChild();
             DetailAST rightParenToken = ast.getLastChild();
 
+            int rightCurlyParen = 0;
+
+            String rightParenText = getLine(rightParenToken.getLineNo() - 1);
+            if (rightParenText.contains("})")) {
+                rightCurlyParen = -1;
+            }
             if (leftParenToken.getLineNo() != rightParenToken.getLineNo()) {
                 int leftParenColumnNo = leftParenToken.getColumnNo();
                 String lineText = getLine(leftParenToken.getLineNo() - 1);
 
+
                 if (lineText.contains("return")) {
                     leftParenColumnNo = lineText.indexOf("return");
-                    if (leftParenColumnNo != rightParenToken.getColumnNo()) {
+                    if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
                         log(leftParenToken, RETURN_MSG_KEY);
                     }
                 } else if (ast.findFirstToken(TokenTypes.DOT) != null) {
                     DetailAST dotLeftToken = ast.getFirstChild().getFirstChild();
                     DetailAST dotRightToken = ast.getFirstChild().getLastChild();
                     leftParenColumnNo = dotLeftToken.getColumnNo();
+
                     if (dotLeftToken.getLineNo() == dotRightToken.getLineNo()) {
-                        if (leftParenColumnNo != rightParenToken.getColumnNo()) {
+                        if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
                             log(leftParenToken, MSG_KEY);
                         }
                     }
-                } else if (leftParenColumnNo != rightParenToken.getColumnNo()) {
+                } else if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
                     log(leftParenToken, MSG_KEY);
                 }
             }
