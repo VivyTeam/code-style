@@ -5,8 +5,8 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
-/*
- * This check ensures that there is no line break immediately after an assign literal
+/**
+ * This check ensures that there is no line break immediately after an assign literal.
  */
 
 
@@ -33,10 +33,10 @@ public class NoLineBreakAfterAssignCheck extends AbstractCheck {
     public void visitToken(DetailAST ast) {
 
         if (ast.getType() == TokenTypes.ASSIGN || ast.getType() == TokenTypes.PLUS_ASSIGN) {
-            final String text = ast.getText();
-            final int colNo = ast.getColumnNo();
-            final int lineNo = ast.getLineNo();
-            final String currentLine = getLine(lineNo - 1);
+            String text = ast.getText();
+            int colNo = ast.getColumnNo();
+            int lineNo = ast.getLineNo();
+            String currentLine = getLine(lineNo - 1);
 
             if (CommonUtil.isBlank(currentLine.substring(colNo + 1))) {
                 log(ast, MSG_KEY, text);

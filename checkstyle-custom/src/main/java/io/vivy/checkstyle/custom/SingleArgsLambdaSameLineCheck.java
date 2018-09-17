@@ -5,15 +5,13 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
-/*
+/**
 * This checks ensures that every lambda operation with single or no argument starts on the same line as its call.
-*
-* The comment approach uses argument(s) counts but the present checkstyle API throws null pointer if the argument is not
-* surrounded by ().
-*
-* The approach assumes that the EXPR will be the second child of a lambda token only if there is only one argument else
-* this check will ignore
-* */
+* The comment approach uses argument(s) counts but the present checkstyle API throws null pointer
+ * if the argument is not surrounded by ().
+* The approach assumes that the EXPR will be the second child of a lambda token only if there is only one
+ * argument else this check will ignore.
+*/
 
 public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
@@ -46,8 +44,8 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
             if ((secondChild != null) && (secondChild.getText() == "EXPR")) {
                 int columnNo = ast.getColumnNo();
-                final int lineNo = ast.getLineNo();
-                final String currentLine = getLine(lineNo - 1);
+                int lineNo = ast.getLineNo();
+                String currentLine = getLine(lineNo - 1);
                 if (CommonUtil.isBlank(currentLine.substring(columnNo + 2))) {
                     log(ast, MSG_KEY);
                 }

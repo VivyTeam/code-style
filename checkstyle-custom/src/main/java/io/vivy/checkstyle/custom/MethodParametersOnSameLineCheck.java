@@ -5,8 +5,10 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
-/*
-* This check ensures method and constructor definitions stays on the same line if number of arguments is not up to three */
+/**
+* This check ensures method and constructor definitions stays on the same line if number of arguments
+ * is not up to three.
+*/
 
 
 public class MethodParametersOnSameLineCheck extends AbstractCheck {
@@ -41,8 +43,8 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
         if (ast.getType() == TokenTypes.METHOD_DEF || ast.getType() == TokenTypes.CTOR_DEF) {
 
-            final DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
-            final int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
+            DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
+            int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
             if (count < max) {
                 int methodDefLine = leftParentToken.getLineNo() - 1;

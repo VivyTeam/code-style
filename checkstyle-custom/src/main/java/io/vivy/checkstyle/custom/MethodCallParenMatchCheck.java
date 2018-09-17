@@ -5,8 +5,9 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
-/*
- * This check ensures that the opening and closing parenthesis of a method or constructor calls have matching indentation */
+/**
+ * This check ensures that the opening and closing parenthesis of a method or constructor calls have matching indentation.
+ */
 
 public class MethodCallParenMatchCheck extends AbstractCheck {
 

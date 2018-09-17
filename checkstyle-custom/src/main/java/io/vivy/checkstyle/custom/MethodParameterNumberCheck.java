@@ -5,9 +5,10 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
-/*
-* This check ensures that arguments of a method or constructor  if more than three should start on a new line and each on a
-* separate line different from the definition */
+/**
+* This check ensures that arguments of a method or constructor if more than three should start on a new line
+ * and each on a separate line different from the definition.
+ */
 
 public class MethodParameterNumberCheck extends AbstractCheck {
 
@@ -43,8 +44,8 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
         if (ast.getType() == TokenTypes.METHOD_DEF || ast.getType() == TokenTypes.CTOR_DEF) {
 
-            final DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
-            final int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
+            DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
+            int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
             if (count >= max) {
 
@@ -60,7 +61,7 @@ public class MethodParameterNumberCheck extends AbstractCheck {
                 while (secondSibling != null) {
                     if (secondSibling.getType() == TokenTypes.PARAMETER_DEF) {
                         if (firstToken.getLineNo() == secondSibling.getLineNo()) {
-                            final DetailAST name = secondSibling.findFirstToken(TokenTypes.IDENT);
+                            DetailAST name = secondSibling.findFirstToken(TokenTypes.IDENT);
                             log(name, MSG_KEY);
                         }
                     }
