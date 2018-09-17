@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestGenericFunctions{
+public class TestGenericFunctions {
 
     protected Checker prepareCheckStyleChecker(Class testClass) throws CheckstyleException {
         Checker checker = new Checker();
