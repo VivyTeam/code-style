@@ -12,7 +12,6 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 * The approach assumes that the EXPR will be the second child of a lambda token only if there is only one
  * argument else this check will ignore.
 */
-
 public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Single Argument Lambda expression should start on the same line, No line break immediately"
@@ -50,22 +49,7 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
                     log(ast, MSG_KEY);
                 }
             }
-//            System.out.println("Outcome : " + secondChild.getText());
-//            DetailAST arguments = ast.findFirstToken(TokenTypes.EXPR);
-//            final int count = arguments.getChildCount(TokenTypes.PARAMETER_DEF);
 
-//            System.out.println("Parameter count: " + count);
-//            if (count <= 1) {
-//                int columnNo = ast.getColumnNo();
-//                final int lineNo = ast.getLineNo();
-//                final String currentLine = getLine(lineNo - 1);
-//
-//                if (CommonUtil.isBlank(currentLine.substring(columnNo + 2))) {
-//                    log(ast, MSG_KEY);
-//                }
-//
-//
-//            }
         }
 
 

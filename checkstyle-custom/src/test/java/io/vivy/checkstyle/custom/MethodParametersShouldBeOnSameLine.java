@@ -9,11 +9,11 @@ import static org.junit.Assert.assertThat;
 
 public class MethodParametersShouldBeOnSameLine {
 
-    GenericFunction genericFunction = new GenericFunction();
+    TestGenericFunctions genericFunction = new TestGenericFunctions();
 
     @Test
     public void checkForParametersOnSameLine() throws Exception {
-        Checker checker = genericFunction.prepareCheckStyleChecker();
+        Checker checker = genericFunction.prepareCheckStyleChecker(MethodParametersOnSameLineCheck.class);
         List<File> files = genericFunction.prepareFilesToBeChecked("TestMethodParametersOnSameLineCheckErrors.java");
         int numberOfErrors = checker.process(files);
         assertThat(numberOfErrors, is(0));

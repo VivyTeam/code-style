@@ -9,13 +9,11 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 * This check ensures method and constructor definitions stays on the same line if number of arguments
  * is not up to three.
 */
-
-
 public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Number of arguments is not more than 3, definitions and parameters should stay on the same line";
 
-    private static final String NL_MSG_KEY = "The closing parenthethis and left curly should be on a new line.";
+    private static final String NL_MSG_KEY = "The closing parenthesis and left curly should be on a new line.";
 
     private static final int DEFAULT_MAX_PARAMETERS = 3;
 

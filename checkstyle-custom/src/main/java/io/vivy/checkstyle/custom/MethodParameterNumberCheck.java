@@ -9,7 +9,6 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 * This check ensures that arguments of a method or constructor if more than three should start on a new line
  * and each on a separate line different from the definition.
  */
-
 public class MethodParameterNumberCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Your Parameters should be one per line ";

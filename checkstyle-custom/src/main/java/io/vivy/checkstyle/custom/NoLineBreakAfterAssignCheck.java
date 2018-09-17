@@ -8,8 +8,6 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 /**
  * This check ensures that there is no line break immediately after an assign literal.
  */
-
-
 public class NoLineBreakAfterAssignCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Line break immediately after assign literal is not allowed";

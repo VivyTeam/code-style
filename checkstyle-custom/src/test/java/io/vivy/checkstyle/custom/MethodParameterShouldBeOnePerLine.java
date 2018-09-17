@@ -11,11 +11,11 @@ import static org.junit.Assert.assertThat;
 
 public class MethodParameterShouldBeOnePerLine {
 
-    GenericFunction genericFunction = new GenericFunction();
+    TestGenericFunctions genericFunction = new TestGenericFunctions();
 
     @Test
     public void checkForParametersOnDifferentLines() throws Exception {
-        Checker checker = genericFunction.prepareCheckStyleChecker();
+        Checker checker = genericFunction.prepareCheckStyleChecker(MethodParameterNumberCheck.class);
         List<File> files = genericFunction.prepareFilesToBeChecked("TestMethodNumberCheckErrors.java");
         int numberOfErrors = checker.process(files);
         assertThat(numberOfErrors, is(0));

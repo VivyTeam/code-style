@@ -12,11 +12,11 @@ import static org.junit.Assert.assertThat;
 
 public class NoLineBreakAfterAssign {
 
-    GenericFunction genericFunction = new GenericFunction();
+    TestGenericFunctions genericFunction = new TestGenericFunctions();
 
     @Test
     public void checkThatNoLineBreakAfterAssign() throws Exception {
-        Checker checker = genericFunction.prepareCheckStyleChecker();
+        Checker checker = genericFunction.prepareCheckStyleChecker(NoLineBreakAfterAssignCheck.class);
         List<File> files = genericFunction.prepareFilesToBeChecked("TestNoLineBreakAfterAssignCheckErrors.java");
         int numberOfErrors = checker.process(files);
         assertThat(numberOfErrors, is(0));

@@ -9,11 +9,11 @@ import static org.junit.Assert.assertThat;
 
 public class SingleArgumentLambdaShouldStartOnSame {
 
-    GenericFunction genericFunction = new GenericFunction();
+    TestGenericFunctions genericFunction = new TestGenericFunctions();
 
     @Test
     public void checkForSingleArgumentLambdaOnSameLine() throws Exception {
-        Checker checker = genericFunction.prepareCheckStyleChecker();
+        Checker checker = genericFunction.prepareCheckStyleChecker(SingleArgsLambdaSameLineCheck.class);
         List<File> files = genericFunction.prepareFilesToBeChecked("TestSingleLambdaArgument.java");
         int numberOfErrors = checker.process(files);
         assertThat(numberOfErrors, is(0));

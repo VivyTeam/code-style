@@ -11,11 +11,11 @@ import static org.junit.Assert.assertThat;
 
 public class MethodCallParenShouldMatch {
 
-    GenericFunction genericFunction = new GenericFunction();
+    TestGenericFunctions genericFunction = new TestGenericFunctions();
 
     @Test
     public void checkThatMethodCallParenMatches() throws Exception {
-        Checker checker = genericFunction.prepareCheckStyleChecker();
+        Checker checker = genericFunction.prepareCheckStyleChecker(MethodCallParenMatchCheck.class);
         List<File> files = genericFunction.prepareFilesToBeChecked("TestMethodCallParenMatchCheckErrors.java");
         int numberOfErrors = checker.process(files);
         assertThat(numberOfErrors, is(0));
