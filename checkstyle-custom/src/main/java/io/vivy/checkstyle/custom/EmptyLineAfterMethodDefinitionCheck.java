@@ -30,14 +30,15 @@ public class EmptyLineAfterMethodDefinitionCheck extends AbstractCheck {
     @Override
     public void visitToken(DetailAST ast) {
         DetailAST statementStart = ast.findFirstToken(TokenTypes.SLIST);
-        DetailAST curlyToken = statementStart.findFirstToken(TokenTypes.RCURLY);
-
-        if (ast.getType() == TokenTypes.METHOD_DEF || ast.getType() == TokenTypes.CTOR_DEF) {
-            int nextLine = statementStart.getLine();
-            if (nextLine <= curlyToken.getLineNo()) {
-                String getNextLine = getLine(statementStart.getLineNo());
-                if (CommonUtil.isBlank(getNextLine.trim())) {
-                    log(statementStart, MSG_KEY);
+        if (statementStart != null) {
+            DetailAST curlyToken = statementStart.findFirstToken(TokenTypes.RCURLY);
+            if (ast.getType() == TokenTypes.METHOD_DEF || ast.getType() == TokenTypes.CTOR_DEF) {
+                int nextLine = statementStart.getLine();
+                if (nextLine <= curlyToken.getLineNo()) {
+                    String getNextLine = getLine(statementStart.getLineNo());
+                    if (CommonUtil.isBlank(getNextLine.trim())) {
+                        log(statementStart, MSG_KEY);
+                    }
                 }
             }
         }

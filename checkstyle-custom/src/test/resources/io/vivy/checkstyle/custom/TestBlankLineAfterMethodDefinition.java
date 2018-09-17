@@ -10,4 +10,7 @@ public class TestBlankLineAfterMethodDefinition {
     public String secondTestMethod() {
         return  "test String";
     }
+
+     String getKey();
+
 }
