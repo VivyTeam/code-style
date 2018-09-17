@@ -6,7 +6,7 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 /**
-* This check ensures that arguments of a method or constructor if more than three should start on a new line
+ * This check ensures that arguments of a method or constructor if more than three should start on a new line
  * and each on a separate line different from the definition.
  */
 public class MethodParameterNumberCheck extends AbstractCheck {
@@ -79,6 +79,5 @@ public class MethodParameterNumberCheck extends AbstractCheck {
         }
 
     }
-
 
 }

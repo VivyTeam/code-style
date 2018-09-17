@@ -26,15 +26,15 @@ public class TestMethodCallParenMatchCheckErrors {
     public static String doNothing(String nothing) {
 
         return nothing
-               .concat(
+           .concat(
               "Nothing"
-        );
+           );
     }
 
     public static String doNothingThird(String nothing) {
 
         return nothing.concat(
-              "Nothing"
+           "Nothing"
         );
     }
 
@@ -42,16 +42,16 @@ public class TestMethodCallParenMatchCheckErrors {
 
     }
 
-    public static  String doNothingFourth(String nothing) {
+    public static String doNothingFourth(String nothing) {
         return StringBuffer(
            nothing.toUpperCase()
         );
     }
 
     public static doNothingTest(String nothing) {
-       new nothing.concat(
+        new nothing.concat(
            "Nothing"
-           );
+        );
     }
 
 }

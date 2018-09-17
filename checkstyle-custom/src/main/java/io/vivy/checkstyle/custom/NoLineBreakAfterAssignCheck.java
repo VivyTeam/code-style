@@ -29,7 +29,6 @@ public class NoLineBreakAfterAssignCheck extends AbstractCheck {
 
     @Override
     public void visitToken(DetailAST ast) {
-
         if (ast.getType() == TokenTypes.ASSIGN || ast.getType() == TokenTypes.PLUS_ASSIGN) {
             String text = ast.getText();
             int colNo = ast.getColumnNo();

@@ -6,9 +6,9 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 /**
-* This check ensures method and constructor definitions stays on the same line if number of arguments
+ * This check ensures method and constructor definitions stays on the same line if number of arguments
  * is not up to three.
-*/
+ */
 public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Number of arguments is not more than 3, definitions and parameters should stay on the same line";
@@ -65,12 +65,11 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
                     }
 
                     String rightParenLine = getLine(rightParentToken.getLineNo() - 1);
-                    if (!CommonUtil.isBlank(rightParenLine.substring(0,rightParentToken.getColumnNo()))) {
+                    if (!CommonUtil.isBlank(rightParenLine.substring(0, rightParentToken.getColumnNo()))) {
                         log(leftParentToken, NL_MSG_KEY);
                     }
 
                 }
-
 
             }
 

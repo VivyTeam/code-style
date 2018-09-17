@@ -22,5 +22,4 @@ public class NoLineBreakAfterAssign {
         assertThat(numberOfErrors, is(0));
     }
 
-
 }

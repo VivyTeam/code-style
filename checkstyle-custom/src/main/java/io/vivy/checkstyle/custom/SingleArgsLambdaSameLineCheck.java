@@ -6,12 +6,12 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 /**
-* This checks ensures that every lambda operation with single or no argument starts on the same line as its call.
-* The comment approach uses argument(s) counts but the present checkstyle API throws null pointer
+ * This checks ensures that every lambda operation with single or no argument starts on the same line as its call.
+ * The comment approach uses argument(s) counts but the present checkstyle API throws null pointer
  * if the argument is not surrounded by ().
-* The approach assumes that the EXPR will be the second child of a lambda token only if there is only one
+ * The approach assumes that the EXPR will be the second child of a lambda token only if there is only one
  * argument else this check will ignore.
-*/
+ */
 public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Single Argument Lambda expression should start on the same line, No line break immediately"
@@ -29,7 +29,7 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
     @Override
     public int[] getRequiredTokens() {
-        return new int[] {
+        return new int[]{
            TokenTypes.LAMBDA
         };
     }
@@ -51,7 +51,6 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
             }
 
         }
-
 
     }
 }

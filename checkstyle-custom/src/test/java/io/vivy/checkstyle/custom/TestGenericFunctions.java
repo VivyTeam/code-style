@@ -3,6 +3,7 @@ package io.vivy.checkstyle.custom;
 import com.puppycrawl.tools.checkstyle.Checker;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,6 +34,5 @@ public class TestGenericFunctions {
         files.add(testFile);
         return files;
     }
-
 
 }
