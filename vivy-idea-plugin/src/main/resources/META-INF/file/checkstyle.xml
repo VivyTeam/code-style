@@ -43,7 +43,7 @@
         <module name="io.vivy.checkstyle.custom.MethodParameterNumberCheck"/>
         <module name="io.vivy.checkstyle.custom.MethodCallParenMatchCheck"/>
         <module name="io.vivy.checkstyle.custom.NoLineBreakAfterAssignCheck"/>
-        <module name="io.vivy.checkstyle.custom.MethodParametersOnSameLineCheck"/>
+        <!--<module name="io.vivy.checkstyle.custom.MethodParametersOnSameLineCheck"/>-->
         <module name="io.vivy.checkstyle.custom.SingleArgsLambdaSameLineCheck" />
         <module name="io.vivy.checkstyle.custom.EmptyLineAfterMethodDefinitionCheck" />
         <module name="LineLength">

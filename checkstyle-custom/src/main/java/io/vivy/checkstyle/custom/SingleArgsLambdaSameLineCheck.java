@@ -15,7 +15,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Single Argument Lambda expression should start on the same line, No line break immediately"
-       + " after the lambda sign";
+        + " after the lambda sign";
 
     @Override
     public int[] getDefaultTokens() {
@@ -30,7 +30,7 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
     @Override
     public int[] getRequiredTokens() {
         return new int[]{
-           TokenTypes.LAMBDA
+            TokenTypes.LAMBDA
         };
     }
 

@@ -5,11 +5,11 @@ public class TestMethodCallParenMatchCheckErrors {
     public void testMethod() {
 
         doNothing(
-           "Nothing"
+            "Nothing"
         );
 
         TestMethodCallParenMatchCheckErrors.nothing(
-           4
+            4
         );
 
     }
