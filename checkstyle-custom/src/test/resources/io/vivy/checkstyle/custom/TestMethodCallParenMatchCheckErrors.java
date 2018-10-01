@@ -47,7 +47,7 @@ public class TestMethodCallParenMatchCheckErrors {
            nothing.toUpperCase()
         );
     }
-//
+
     public static doNothingTest(String nothing) {
         new nothing.concat(
            "Nothing"
@@ -60,13 +60,13 @@ public class TestMethodCallParenMatchCheckErrors {
             @Override
             public Authentication extractAuthentication(java.util.Map<String, ?> map) {
                 OAuthUser user = new OAuthUser(
-                   OAuthUser.Type.valueOf(((String) map.get("stype")).toUpperCase()),
-                   (String) map.get("id")
+                     OAuthUser.Type.valueOf(((String) map.get("stype")).toUpperCase()),
+                      (String) map.get("id")
                 );
                 PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(user, null);
                 authentication.setAuthenticated(true);
                 return authentication;
-                                                       }
+            }
         });
     }
 
@@ -89,6 +89,18 @@ public class TestMethodCallParenMatchCheckErrors {
                 "id", user.getId(),
                 "stype", user.getType(),
                 "exp", Instant.now().plusSeconds(3600).getEpochSecond()
+        );
+    }
+
+    public void lambdaChainTestCase(){
+        await().atMost(FIVE_SECONDS)
+                .untilAsserted(() ->
+                        given(requestSpecification)
+                                .auth().oauth2(getAccessToken(user))
+                                .get(SUBJECT_PUBLIC_EMERGENCY)
+                                .then()
+                                .statusCode(200)
+                                .body("emergency", empty())
         );
     }
 
