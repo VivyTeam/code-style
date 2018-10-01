@@ -11,10 +11,10 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 public class MethodCallParenMatchCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
-        + " indentation if on different lines";
+            + " indentation if on different lines";
 
     private static final String RETURN_MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
-        + " indentation with the return keyword since they are on different lines";
+            + " indentation with the return keyword since they are on different lines";
 
     @Override
     public int[] getDefaultTokens() {
@@ -44,6 +44,9 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             if (rightParenText.contains("})")) {
                 rightCurlyParen = -1;
             }
+            if (rightParenText.contains("))") || rightParenText.contains(")))")) {
+                return;
+            }
             if (leftParenToken.getLineNo() != rightParenToken.getLineNo()) {
                 int leftParenColumnNo = leftParenToken.getColumnNo();
                 String lineText = getLine(leftParenToken.getLineNo() - 1);
@@ -60,6 +63,7 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                     leftParenColumnNo = dotLeftToken.getColumnNo();
 
                     if (dotLeftToken.getLineNo() == dotRightToken.getLineNo()) {
+
                         if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
                             log(leftParenToken, MSG_KEY);
                         }
