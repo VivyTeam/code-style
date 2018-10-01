@@ -13,6 +13,9 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
     private static final String MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
             + " indentation if on different lines";
 
+    private static final String INDENT_MSG_KEY = "Ensure that the line of the closing parenthesis line has the same indentation"
+            + " as that of the opening parenthesis line";
+
     private static final String RETURN_MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
             + " indentation with the return keyword since they are on different lines";
 
@@ -39,14 +42,25 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             DetailAST rightParenToken = ast.getLastChild();
 
             int rightCurlyParen = 0;
-
+////
             String rightParenText = getLine(rightParenToken.getLineNo() - 1);
+//            System.out.println("Right Paren Line: " + rightParenText);
+//
+//            String leftParenText = getLine(leftParenToken.getLineNo() - 1);
+//            System.out.println("Left Paren Line: " + leftParenText);
+//
+//            System.out.println("Left Paren Call Line Indent:" + getLineStart(getLine(leftParenToken.getLineNo() - 1)));
+//            System.out.println("Right Paren Call Line Indent:" + getLineStart(getLine(rightParenToken.getLineNo() - 1)));
+
+            int leftIndent = getLineStart(getLine(leftParenToken.getLineNo() - 1));
+            int rightIndent = getLineStart(getLine(rightParenToken.getLineNo() - 1));
+
             if (rightParenText.contains("})")) {
                 rightCurlyParen = -1;
             }
-            if (rightParenText.contains("))") || rightParenText.contains(")))")) {
-                return;
-            }
+//            if (rightParenText.contains("))") || rightParenText.contains(")))")) {
+//                return;
+//            }
             if (leftParenToken.getLineNo() != rightParenToken.getLineNo()) {
                 int leftParenColumnNo = leftParenToken.getColumnNo();
                 String lineText = getLine(leftParenToken.getLineNo() - 1);
@@ -57,7 +71,13 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                     if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
                         log(leftParenToken, RETURN_MSG_KEY);
                     }
-                } else if (ast.findFirstToken(TokenTypes.DOT) != null) {
+                }
+                else if ((rightParenText.contains("))")) || (rightParenText.contains(")))")) || (rightParenText.contains(");"))) {
+                    if (leftIndent != rightIndent){
+                        log(leftParenToken, INDENT_MSG_KEY);
+                    }
+                }
+                else if (ast.findFirstToken(TokenTypes.DOT) != null) {
                     DetailAST dotLeftToken = ast.getFirstChild().getFirstChild();
                     DetailAST dotRightToken = ast.getFirstChild().getLastChild();
                     leftParenColumnNo = dotLeftToken.getColumnNo();
@@ -74,4 +94,13 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             }
         }
     }
+
+    private int getLineStart(String line) {
+        int index = 0;
+        while (Character.isWhitespace(line.charAt(index))) {
+            index++;
+        }
+        return CommonUtil.lengthExpandedTabs(line, index, getTabWidth());
+    }
+
 }
