@@ -60,7 +60,8 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
 
                 if (lineText.contains("return")) {
                     leftParenColumnNo = lineText.indexOf("return");
-                    if ((rightParenText.contains("))")) || (rightParenText.contains(")))")) || (rightParenText.contains(");"))) {
+                    if ((rightParenText.contains("))")) || (rightParenText.contains(")))")) || (rightParenText.contains("})"))
+                            || (rightParenText.contains(");"))) {
                         if (leftParenText.trim().charAt(0) == '.') {
                             return; //ignore this because of the conflict with lambda indent check
                         }
@@ -71,7 +72,8 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                         if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
                             log(leftParenToken, RETURN_MSG_KEY);
                         }
-                } else if ((rightParenText.contains("))")) || (rightParenText.contains(")))")) || (rightParenText.contains(");"))) {
+                } else if ((rightParenText.contains("))")) || (rightParenText.contains(")))")) || (rightParenText.contains("})"))
+                        || (rightParenText.contains(");"))) {
                     if (leftParenText.trim().charAt(0) == '.') {
                         return; //ignore this because of the conflict with lambda indent check
                     }
