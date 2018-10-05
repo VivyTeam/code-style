@@ -49,10 +49,6 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             int leftIndent = getLineStart(getLine(leftParenToken.getLineNo() - 1));
             int rightIndent = getLineStart(getLine(rightParenToken.getLineNo() - 1));
 
-            if (rightParenText.contains("})")) {
-                rightCurlyParen = -1;
-            }
-
             if (leftParenToken.getLineNo() != rightParenToken.getLineNo()) {
                 int leftParenColumnNo = leftParenToken.getColumnNo();
                 String lineText = getLine(leftParenToken.getLineNo() - 1);
@@ -61,7 +57,7 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                 if (lineText.contains("return")) {
                     leftParenColumnNo = lineText.indexOf("return");
                     if ((rightParenText.contains("))")) || (rightParenText.contains(");")) || (rightParenText.contains("})"))) {
-                        if (leftParenText.trim().charAt(0) == '.' ) {
+                        if (leftParenText.trim().charAt(0) == '.') {
                             return; //ignore this because of the conflict with lambda indent check
                         }
                         if (leftParenColumnNo != rightIndent) {

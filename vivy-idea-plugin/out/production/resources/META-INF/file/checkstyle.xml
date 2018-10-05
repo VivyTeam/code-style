@@ -40,6 +40,12 @@
             <property name="allowByTailComment" value="true"/>
             <property name="allowNonPrintableEscapes" value="true"/>
         </module>
+        <module name="io.vivy.checkstyle.custom.MethodParameterNumberCheck"/>
+        <module name="io.vivy.checkstyle.custom.MethodCallParenMatchCheck"/>
+        <module name="io.vivy.checkstyle.custom.NoLineBreakAfterAssignCheck"/>
+        <!--<module name="io.vivy.checkstyle.custom.MethodParametersOnSameLineCheck"/>-->
+        <module name="io.vivy.checkstyle.custom.SingleArgsLambdaSameLineCheck" />
+        <module name="io.vivy.checkstyle.custom.EmptyLineAfterMethodDefinitionCheck" />
         <module name="LineLength">
             <property name="max" value="160"/>
             <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
@@ -190,9 +196,8 @@
             <property name="caseIndent" value="4"/>
             <property name="throwsIndent" value="4"/>
             <property name="lineWrappingIndentation" value="4"/>
-            <property name="forceStrictCondition" value="false"/>
             <property name="arrayInitIndent" value="4"/>
-
+        </module>
         <module name="AbbreviationAsWordInName">
             <property name="ignoreFinal" value="false"/>
             <property name="allowedAbbreviationLength" value="10"/>

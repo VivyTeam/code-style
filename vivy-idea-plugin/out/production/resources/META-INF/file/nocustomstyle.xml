@@ -190,9 +190,8 @@
             <property name="caseIndent" value="4"/>
             <property name="throwsIndent" value="4"/>
             <property name="lineWrappingIndentation" value="4"/>
-            <property name="forceStrictCondition" value="false"/>
             <property name="arrayInitIndent" value="4"/>
-
+        </module>
         <module name="AbbreviationAsWordInName">
             <property name="ignoreFinal" value="false"/>
             <property name="allowedAbbreviationLength" value="10"/>
