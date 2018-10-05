@@ -60,9 +60,17 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
 
                 if (lineText.contains("return")) {
                     leftParenColumnNo = lineText.indexOf("return");
-                    if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
-                        log(leftParenToken, RETURN_MSG_KEY);
-                    }
+                    if ((rightParenText.contains("))")) || (rightParenText.contains(")))")) || (rightParenText.contains(");"))) {
+                        if (leftParenText.trim().charAt(0) == '.') {
+                            return; //ignore this because of the conflict with lambda indent check
+                        }
+                        if (leftParenColumnNo != rightIndent) {
+                            log(leftParenToken, INDENT_MSG_KEY);
+                        }
+                    } else
+                        if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
+                            log(leftParenToken, RETURN_MSG_KEY);
+                        }
                 } else if ((rightParenText.contains("))")) || (rightParenText.contains(")))")) || (rightParenText.contains(");"))) {
                     if (leftParenText.trim().charAt(0) == '.') {
                         return; //ignore this because of the conflict with lambda indent check

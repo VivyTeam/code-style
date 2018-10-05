@@ -1,5 +1,8 @@
 package io.vivy.checkstyle.custom;
 
+import java.time.Duration;
+import java.util.Set;
+
 public class TestMethodCallParenMatchCheckErrors {
 
     public void testMethod() {
@@ -70,7 +73,7 @@ public class TestMethodCallParenMatchCheckErrors {
         });
     }
 
-    public void newTestCase(int b){
+    public void newTestCase(int b) {
         given(requestSpecification)
                 .contentType(ContentType.JSON)
                 .auth().oauth2(getAccessToken(user))
@@ -84,7 +87,7 @@ public class TestMethodCallParenMatchCheckErrors {
 
     }
 
-    public void additionalTestCase(){
+    public void additionalTestCase() {
         Map<String, Object> token = Map.of(
                 "id", user.getId(),
                 "stype", user.getType(),
@@ -92,7 +95,7 @@ public class TestMethodCallParenMatchCheckErrors {
         );
     }
 
-    public void lambdaChainTestCase(){
+    public void lambdaChainTestCase() {
         await().atMost(FIVE_SECONDS)
                 .untilAsserted(() ->
                         given(requestSpecification)
@@ -104,5 +107,10 @@ public class TestMethodCallParenMatchCheckErrors {
         );
     }
 
+    ReactiveRequestRateLimiter illegalAttemptsRateLimiter(RedisRateLimiterFactory rateLimiterFactory) {
+        return rateLimiterFactory.getInstanceReactive(Set.of(
+                RequestLimitRule.of(Duration.ofMinutes(5), 10)
+        ));
+    }
 }
 
