@@ -3,6 +3,7 @@ package io.vivy.checkstyle.custom;
 import java.time.Duration;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class TestMethodCallParenMatchCheckErrors {
 
@@ -105,7 +106,17 @@ public class TestMethodCallParenMatchCheckErrors {
                                 .then()
                                 .statusCode(200)
                                 .body("emergency", empty())
-        );
+                );
+    }
+
+    public void testChainStartsOnaLine(){
+        await().atMost(5, TimeUnit.SECONDS)
+                .untilAsserted(() ->
+                        given(publicEmergencyRequest()).get()
+                                .then()
+                                .statusCode(200)
+                                .body("emergency", empty())
+                );
     }
 
     ReactiveRequestRateLimiter illegalAttemptsRateLimiter(RedisRateLimiterFactory rateLimiterFactory) {
@@ -124,5 +135,6 @@ public class TestMethodCallParenMatchCheckErrors {
                 )
         ))).withStatusCode(302);
     }
+
 }
 

@@ -14,7 +14,7 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             + " indentation if on different lines";
 
     private static final String INDENT_MSG_KEY = "Ensure that the line of the closing parenthesis line has the same indentation"
-            + " as that of the opening parenthesis line";
+            + " as that of the opening parenthesis, especially for chained method calls";
 
     private static final String RETURN_MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
             + " indentation with the return keyword since they are on different lines";
@@ -44,7 +44,6 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             int rightCurlyParen = 0;
 
             String rightParenText = getLine(rightParenToken.getLineNo() - 1);
-            String leftParenText = getLine(leftParenToken.getLineNo() - 1);
 
             int leftIndent = getLineStart(getLine(leftParenToken.getLineNo() - 1));
             int rightIndent = getLineStart(getLine(rightParenToken.getLineNo() - 1));
@@ -57,10 +56,7 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                 if (lineText.contains("return")) {
                     leftParenColumnNo = lineText.indexOf("return");
                     if ((rightParenText.contains("))")) || (rightParenText.contains(");")) || (rightParenText.contains("})"))) {
-                        if (leftParenText.trim().charAt(0) == '.') {
-                            return; //ignore this because of the conflict with lambda indent check
-                        }
-                        if (leftParenColumnNo != rightIndent) {
+                        if (leftIndent != rightIndent) {
                             log(leftParenToken, INDENT_MSG_KEY);
                         }
                     } else
@@ -68,9 +64,6 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                             log(leftParenToken, RETURN_MSG_KEY);
                         }
                 } else if ((rightParenText.contains("))")) || (rightParenText.contains(");")) || (rightParenText.contains("})"))) {
-                    if ((leftParenText.trim().charAt(0) == '.') || (rightParenText.trim().charAt(0) == '.')) {
-                        return; //ignore this because of the conflict with lambda indent check
-                    }
                     if (leftIndent != rightIndent) {
                         log(leftParenToken, INDENT_MSG_KEY);
                     }
