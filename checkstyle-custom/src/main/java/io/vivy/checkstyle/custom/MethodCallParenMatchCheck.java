@@ -56,6 +56,11 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                 if (lineText.contains("return")) {
                     leftParenColumnNo = lineText.indexOf("return");
                     if ((rightParenText.contains("))")) || (rightParenText.contains(");")) || (rightParenText.contains("})"))) {
+                        //ignore if not the terminating end
+                        if (rightParenText.trim().charAt(rightParenText.trim().length() - 1) != ';') {
+                            return;
+                        }
+
                         if (leftIndent != rightIndent) {
                             log(leftParenToken, INDENT_MSG_KEY);
                         }
@@ -64,6 +69,10 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                             log(leftParenToken, RETURN_MSG_KEY);
                         }
                 } else if ((rightParenText.contains("))")) || (rightParenText.contains(");")) || (rightParenText.contains("})"))) {
+                    //ignore if not the terminating end
+                    if (rightParenText.trim().charAt(rightParenText.trim().length() - 1) != ';') {
+                        return;
+                    }
                     if (leftIndent != rightIndent) {
                         log(leftParenToken, INDENT_MSG_KEY);
                     }

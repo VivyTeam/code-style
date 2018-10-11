@@ -136,5 +136,11 @@ public class TestMethodCallParenMatchCheckErrors {
         ))).withStatusCode(302);
     }
 
+    void shouldNotPublishWrongEvents() {
+        assertThatThrownBy(() -> userEventLogService.publish(user.toSubjectId(), new BadEvent())
+                .block(Duration.ofSeconds(10)))
+                .isInstanceOf(StatusRuntimeException.class)
+                .hasMessageContaining("No schema for 'bad/event'");
+    }
 }
 

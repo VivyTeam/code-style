@@ -13,9 +13,9 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Your Parameters should be one per line ";
 
-    private static final String LEFT_PAREN_MSG_KEY = "Parameters listing should start on a new line ";
+    private static final String PARAMETERS_MSG_KEY = "Parameters listing should start on a new line when they are three or more ";
 
-    private static final String RIGHT_PAREN_MSG_KEY = "Closing parenthesis for parameter listing should be on a new line ";
+    private static final String RIGHT_PAREN_PARAMETER_MSG_KEY = "Closing parenthesis for parameter listing should be on a new line ";
 
     private static final int DEFAULT_MAX_PARAMETERS = 3;
 
@@ -53,7 +53,7 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
                 //check if the first left parenthesis is not on the same line with the parameter listing
                 if (leftParentToken.getLineNo() == firstToken.getLineNo()) {
-                    log(leftParentToken, LEFT_PAREN_MSG_KEY);
+                    log(leftParentToken, PARAMETERS_MSG_KEY);
                 }
 
                 // check if the parameters are on different list
@@ -73,7 +73,7 @@ public class MethodParameterNumberCheck extends AbstractCheck {
                 //check if the first left parenthesis is not on the same line with the parameter listing
                 if (rightParentToken.getLineNo() == firstToken.getLineNo()) {
 
-                    log(rightParentToken, RIGHT_PAREN_MSG_KEY);
+                    log(rightParentToken, RIGHT_PAREN_PARAMETER_MSG_KEY);
                 }
             }
         }
