@@ -19,6 +19,10 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
     private static final String RETURN_MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
             + " indentation with the return keyword since they are on different lines";
 
+    private static final String INNER_METHOD_CALL_MSK_KEY = "Closing parenthesis of a method call inside another method call but starts on a "
+            + "new line must match the indentation of the line of the opening parenthesis";
+
+
     @Override
     public int[] getDefaultTokens() {
         return getAcceptableTokens();
@@ -42,9 +46,11 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
             DetailAST rightParenToken = ast.getLastChild();
 
             int rightCurlyParen = 0;
-
             String rightParenText = getLine(rightParenToken.getLineNo() - 1);
 
+//            System.out.println("Left Token Column: " + leftParenToken.getColumnNo() + "Left Line : "+ getLine(leftParenToken.getLineNo() - 1));
+//            System.out.println("Right Token Column: " + rightParenToken.getColumnNo());
+//
             int leftIndent = getLineStart(getLine(leftParenToken.getLineNo() - 1));
             int rightIndent = getLineStart(getLine(rightParenToken.getLineNo() - 1));
 
@@ -82,8 +88,12 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                     leftParenColumnNo = dotLeftToken.getColumnNo();
 
                     if (dotLeftToken.getLineNo() == dotRightToken.getLineNo()) {
-
-                        if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
+                        if (dotLeftToken.getColumnNo() != leftIndent) {
+                            leftParenColumnNo = leftIndent;
+                            if (leftParenColumnNo != rightParenToken.getColumnNo()) {
+                                log(leftParenToken, INNER_METHOD_CALL_MSK_KEY);
+                            }
+                        } else if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
                             log(leftParenToken, MSG_KEY);
                         }
                     }

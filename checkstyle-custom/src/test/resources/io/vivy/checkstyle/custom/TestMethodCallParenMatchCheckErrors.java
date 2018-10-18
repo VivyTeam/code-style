@@ -142,5 +142,19 @@ public class TestMethodCallParenMatchCheckErrors {
                 .isInstanceOf(StatusRuntimeException.class)
                 .hasMessageContaining("No schema for 'bad/event'");
     }
+
+    public HttpResponse link(String uuid, MockServerClient client) {
+        return HttpResponse.response()
+                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE)
+                .withBody(objectMapper.writeValueAsBytes(Map.of(
+                        "link", "http://" + client.remoteAddress().getHostName() + ":" + client.remoteAddress().getPort() + "/external/redirect/" + uuid + AWS_LINK_PARAMS,
+                        "encryption", Map.of(
+                                "contentType", "application/json",
+                                "compression", "gzip"
+                        )
+                )))
+                .withStatusCode(302);
+    }
+
 }
 
