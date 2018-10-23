@@ -19,7 +19,7 @@ allprojects {
         }
 
         dependencies {
-            dependency 'com.puppycrawl.tools:checkstyle:8.12'
+            dependency 'com.puppycrawl.tools:checkstyle:8.14'
         }
 
     }
