@@ -7,11 +7,11 @@ version '1.0'
 
 allprojects {
     apply plugin: 'io.spring.dependency-management'
-//    apply plugin: 'checkstyle'
-//
-//    checkstyle {
-//        config project.resources.text.fromUri('https://raw.githubusercontent.com/UvitaTeam/code-style/enhance/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
-//    }
+    apply plugin: 'checkstyle'
+
+    checkstyle {
+        config project.resources.text.fromUri('https://raw.githubusercontent.com/UvitaTeam/code-style/enhance/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
+    }
 
     repositories {
         jcenter()
@@ -25,7 +25,7 @@ allprojects {
         }
 
         dependencies {
-//            dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:enhance-SNAPSHOT'
+            dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:0.0.1'
             dependency 'com.puppycrawl.tools:checkstyle:8.14'
 
         }
