@@ -11,7 +11,6 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
 
     checkstyle {
                config project.resources.text.fromUri('https://raw.githubusercontent.com/UvitaTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
-               toolVersion = "8.12"
            }
 
     repositories {
@@ -20,7 +19,7 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
        }
 
     dependencies {
-               dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:master-SNAPSHOT'
+               dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:0.0.1'
          }
 
      }
