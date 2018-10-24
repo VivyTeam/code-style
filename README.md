@@ -19,7 +19,7 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
        }
 
     dependencies {
-               dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:0.0.1'
+               dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:1.0.0'
          }
 
      }
