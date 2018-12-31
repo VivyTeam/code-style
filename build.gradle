@@ -26,7 +26,7 @@ allprojects {
 
         dependencies {
             dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:1.0.0'
-            dependency 'com.puppycrawl.tools:checkstyle:8.14'
+            dependency 'com.puppycrawl.tools:checkstyle:8.16'
 
         }
 
