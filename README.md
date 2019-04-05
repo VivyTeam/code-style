@@ -1,3 +1,9 @@
+# Plugin does not work now
+Plugin is outdated and can't be used with a new Idea. 
+Checkstyle file with custom checks that we have can't be used in plugin either.
+So the main file in this repository is [checkstyle.xml](vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml) 
+which you can use in gradle checkstyle configuration.
+
 # Vivy Java Code-CheckStyle
 
 This plugin helps to reformat existing codebase to adopted CodeStyle and work in conjunction with [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) and settings as follows:
