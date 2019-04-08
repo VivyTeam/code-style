@@ -21,7 +21,7 @@ Adapt your ` build.gradle ` file to the following structure : This should fail b
        }
 
     dependencies {
-               dependency 'com.github.UvitaTeam.code-style:checkstyle-custom:1.0.0'
+               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.0.0'
          }
 
      }
@@ -29,7 +29,7 @@ Adapt your ` build.gradle ` file to the following structure : This should fail b
    subprojects {
 
         dependencies {
-            checkstyle 'com.github.UvitaTeam.code-style:checkstyle-custom'
+            checkstyle 'com.github.VivyTeam.code-style:checkstyle-custom'
           }
        }
     
