@@ -1,7 +1,6 @@
 # How to enable Checkstyle in your project
 
-Main link to checkstyle config is: 
-`https://raw.githubusercontent.com/VivyTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml`
+Add checkstyle config from [Checkstyle XML File](/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml)
 
 
 ## Configure build.gradle
@@ -12,7 +11,11 @@ Adapt your ` build.gradle ` file to the following structure : This should fail b
       apply plugin: 'checkstyle'
 
       checkstyle {
-         config project.resources.text.fromUri('${checkstyle_config_url}')
+         config project.resources.text.fromUri('https://raw.githubusercontent.com/VivyTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
+         
+         // To disable in tests. We generally appreciate tests aligned with checkstyle, 
+         // but that's not mandatory in some cases
+         sourceSets = [project.sourceSets.main] 
       }
 
       repositories {
