@@ -6,7 +6,7 @@ Add checkstyle config from [Checkstyle XML File](/vivy-idea-plugin/src/main/reso
 ## Configure build.gradle
 
 Adapt your ` build.gradle ` file to the following structure : This should fail build operation if there exists codestyles adherence error(s).
-```
+```gradle
    allprojects {
       apply plugin: 'checkstyle'
 
@@ -25,10 +25,14 @@ Adapt your ` build.gradle ` file to the following structure : This should fail b
 
       dependencyManagement {
          dependencies {
+         
+               // Other dependencies...
+               
                dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.1.0'
          }
       }
    }
+   
    // -------
 
    subprojects {
