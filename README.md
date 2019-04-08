@@ -4,38 +4,39 @@ Main link to checkstyle config is:
 `https://raw.githubusercontent.com/VivyTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml`
 
 
-##Configure build.gradle
+## Configure build.gradle
 
 Adapt your ` build.gradle ` file to the following structure : This should fail build operation if there exists codestyles adherence error(s).
 ```
    allprojects {
-    apply plugin: 'checkstyle'
+      apply plugin: 'checkstyle'
 
-    checkstyle {
-               config project.resources.text.fromUri('${checkstyle_config_url}')
-           }
+      checkstyle {
+         config project.resources.text.fromUri('${checkstyle_config_url}')
+      }
 
-    repositories {
+      repositories {
            jcenter()
            maven { url 'https://jitpack.io'}
-       }
+      }
 
-    dependencies {
-               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.0.0'
+      dependencyManagement {
+         dependencies {
+               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.1.0'
          }
-
-     }
+      }
+   }
+   // -------
 
    subprojects {
-
         dependencies {
             checkstyle 'com.github.VivyTeam.code-style:checkstyle-custom'
-          }
-       }
+        }
+   }
     
 ``` 
 
-##Adjust Idea
+## Adjust Idea
 
 1. First of all you need to install `CheckStyle-IDEA Plugin`. 
 
