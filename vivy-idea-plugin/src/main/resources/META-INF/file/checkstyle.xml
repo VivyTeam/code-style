@@ -19,6 +19,8 @@
 
     <property name="severity" value="error"/>
 
+    <module name="SuppressWarningsFilter" />
+
     <!--<property name="fileExtensions" value="java, properties, xml"/>-->
     <!-- Checks for whitespace                               -->
     <!-- See http://checkstyle.sf.net/config_whitespace.html -->
@@ -27,6 +29,7 @@
     </module>
 
     <module name="TreeWalker">
+        <module name="SuppressWarningsHolder" />
         <module name="OuterTypeFilename"/>
         <module name="IllegalTokenText">
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
@@ -72,7 +75,6 @@
         </module>
         <module name="RightCurly">
             <property name="id" value="RightCurlyAlone"/>
-            <property name="shouldStartLine" value="true"/>
             <property name="option" value="alone"/>
             <property name="tokens"
                       value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,

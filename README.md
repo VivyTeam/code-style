@@ -1,16 +1,18 @@
-# Vivy Java Code-CheckStyle
+# How to enable Checkstyle in your project
 
-This plugin helps to reformat existing codebase to adopted CodeStyle and work in conjunction with [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) and settings as follows:
+Main link to checkstyle config is: 
+`https://raw.githubusercontent.com/VivyTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml`
 
-## Configuration steps
 
-1. Adapt your ` build.gradle ` file to the following structure : This should fail build operation if there exists codestyles adherence error(s).
+##Configure build.gradle
+
+Adapt your ` build.gradle ` file to the following structure : This should fail build operation if there exists codestyles adherence error(s).
 ```
    allprojects {
     apply plugin: 'checkstyle'
 
     checkstyle {
-               config project.resources.text.fromUri('https://raw.githubusercontent.com/UvitaTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
+               config project.resources.text.fromUri('${checkstyle_config_url}')
            }
 
     repositories {
@@ -32,15 +34,19 @@ This plugin helps to reformat existing codebase to adopted CodeStyle and work in
        }
     
 ``` 
-    
-2. This plugin requires [CheckStyle-Idea Plugin](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) as a prerequisite. Download and install it, add and set the checkstyle to be used, using the checkstyle file (url in previous step) via file via File | Other Settings | Checkstyle :: This is for real-time tracking of the coding style possible violation(s).
 
-3. Enable the Plugin : File | Editor | CodeStyle  and select Checker
+##Adjust Idea
 
-## Building the Plugin
+1. First of all you need to install `CheckStyle-IDEA Plugin`. 
 
-A buildPlugin gradle operation should generate .jar file which can then be added to IntelliJ as a plugin.
+2. Secondly you need to download latest release of vivy checks from here: 
+[latest release](https://github.com/VivyTeam/code-style/releases/latest). 
 
-## Resource
+3. Now you need to add vivy-checkstyle to idea. 
+* Preferences-> Other Settings -> Checkstyle 
+  * **Third PartyChecks -> + -> /path/to/custom-checkstyle.jar**
+  * **Configuration -> + -> link_from_above_to_checkstyle_config**
+ 
+Or as a screenshot: 
 
-http://www.jetbrains.org/intellij/sdk/docs/welcome.html
+![Checkstyle Idea Configuration](docs/CheckstyleConfigurationIdea.png?raw=true "Checkstyle Configuration")
