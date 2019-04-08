@@ -11,16 +11,16 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 public class MethodCallParenMatchCheck extends AbstractCheck {
 
     private static final String MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
-            + " indentation if on different lines";
+        + " indentation if on different lines";
 
     private static final String INDENT_MSG_KEY = "Ensure that the line of the closing parenthesis line has the same indentation"
-            + " as that of the opening parenthesis, especially for chained method calls";
+        + " as that of the opening parenthesis, especially for chained method calls";
 
     private static final String RETURN_MSG_KEY = "Opening and closing parenthesis of a method or constructor calls should have the same"
-            + " indentation with the return keyword since they are on different lines";
+        + " indentation with the return keyword since they are on different lines";
 
     private static final String INNER_METHOD_CALL_MSK_KEY = "Closing parenthesis of a method call inside another method call but starts on a "
-            + "new line must match the indentation of the line of the opening parenthesis";
+        + "new line must match the indentation of the line of the opening parenthesis";
 
 
     @Override
@@ -30,7 +30,7 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
 
     @Override
     public int[] getAcceptableTokens() {
-        return new int[]{TokenTypes.METHOD_CALL, TokenTypes.CTOR_CALL, TokenTypes.METHOD_DEF};
+        return new int[] {TokenTypes.METHOD_CALL, TokenTypes.CTOR_CALL, TokenTypes.METHOD_DEF};
     }
 
 
@@ -70,10 +70,9 @@ public class MethodCallParenMatchCheck extends AbstractCheck {
                         if (leftIndent != rightIndent) {
                             log(leftParenToken, INDENT_MSG_KEY);
                         }
-                    } else
-                        if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
-                            log(leftParenToken, RETURN_MSG_KEY);
-                        }
+                    } else if (leftParenColumnNo != (rightParenToken.getColumnNo() + rightCurlyParen)) {
+                        log(leftParenToken, RETURN_MSG_KEY);
+                    }
                 } else if ((rightParenText.contains("))")) || (rightParenText.contains(");")) || (rightParenText.contains("})"))) {
                     //ignore if not the terminating end
                     if (rightParenText.trim().charAt(rightParenText.trim().length() - 1) != ';') {

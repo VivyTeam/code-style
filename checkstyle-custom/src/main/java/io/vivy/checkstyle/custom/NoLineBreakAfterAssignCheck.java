@@ -19,7 +19,7 @@ public class NoLineBreakAfterAssignCheck extends AbstractCheck {
 
     @Override
     public int[] getAcceptableTokens() {
-        return new int[]{TokenTypes.ASSIGN, TokenTypes.PLUS_ASSIGN};
+        return new int[] {TokenTypes.ASSIGN, TokenTypes.PLUS_ASSIGN};
     }
 
     @Override

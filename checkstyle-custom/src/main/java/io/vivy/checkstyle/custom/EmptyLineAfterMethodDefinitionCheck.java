@@ -19,7 +19,7 @@ public class EmptyLineAfterMethodDefinitionCheck extends AbstractCheck {
 
     @Override
     public int[] getAcceptableTokens() {
-        return new int[]{TokenTypes.METHOD_DEF, TokenTypes.CTOR_DEF};
+        return new int[] {TokenTypes.METHOD_DEF, TokenTypes.CTOR_DEF};
     }
 
     @Override

@@ -14,7 +14,7 @@ public class OnActionSync extends AnAction {
             return;
         }
         new CodeStyleManager(project.getBasePath())
-                .sync();
+            .sync();
     }
 
 }

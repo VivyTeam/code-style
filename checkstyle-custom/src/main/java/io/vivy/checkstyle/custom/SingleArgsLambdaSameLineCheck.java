@@ -1,8 +1,8 @@
 package io.vivy.checkstyle.custom;
 
 import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
-import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
+import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 /**
@@ -14,8 +14,8 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  */
 public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
-    private static final String MSG_KEY = "Single Argument Lambda expression should start on the same line, No line break immediately"
-        + " after the lambda sign";
+    private static final String MSG_KEY = "Single Argument Lambda expression should start "
+        + "on the same line. No line break immediately after the lambda sign";
 
     @Override
     public int[] getDefaultTokens() {
@@ -29,7 +29,7 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
 
     @Override
     public int[] getRequiredTokens() {
-        return new int[]{
+        return new int[] {
             TokenTypes.LAMBDA
         };
     }
@@ -37,11 +37,10 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
     @Override
     public void visitToken(DetailAST ast) {
         if (ast.getType() == TokenTypes.LAMBDA) {
-
             DetailAST firstChild = ast.getFirstChild();
             DetailAST secondChild = firstChild.getNextSibling();
 
-            if ((secondChild != null) && (secondChild.getText() == "EXPR")) {
+            if (secondChild != null && (secondChild.getText().equals("EXPR"))) {
                 int columnNo = ast.getColumnNo();
                 int lineNo = ast.getLineNo();
                 String currentLine = getLine(lineNo - 1);
@@ -49,8 +48,6 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
                     log(ast, MSG_KEY);
                 }
             }
-
         }
-
     }
 }

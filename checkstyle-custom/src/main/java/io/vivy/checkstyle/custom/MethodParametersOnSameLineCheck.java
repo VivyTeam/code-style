@@ -17,8 +17,6 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
     private static final int DEFAULT_MAX_PARAMETERS = 3;
 
-    private int max = DEFAULT_MAX_PARAMETERS;
-
     @Override
     public int[] getDefaultTokens() {
         return getAcceptableTokens();
@@ -26,7 +24,7 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
 
     @Override
     public int[] getAcceptableTokens() {
-        return new int[]{TokenTypes.METHOD_DEF, TokenTypes.CTOR_DEF, TokenTypes.METHOD_CALL, TokenTypes.METHOD_CALL};
+        return new int[] {TokenTypes.METHOD_DEF, TokenTypes.CTOR_DEF, TokenTypes.METHOD_CALL, TokenTypes.METHOD_CALL};
     }
 
     @Override
@@ -44,7 +42,7 @@ public class MethodParametersOnSameLineCheck extends AbstractCheck {
             DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
             int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
-            if (count < max) {
+            if (count < DEFAULT_MAX_PARAMETERS) {
                 int methodDefLine = leftParentToken.getLineNo() - 1;
                 int closingParenLineNo = rightParentToken.getLineNo() - 1;
                 int currentLineNo = methodDefLine;

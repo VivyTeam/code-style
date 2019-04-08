@@ -19,8 +19,6 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
     private static final int DEFAULT_MAX_PARAMETERS = 3;
 
-    private int max = DEFAULT_MAX_PARAMETERS;
-
     @Override
     public int[] getDefaultTokens() {
         return getAcceptableTokens();
@@ -28,7 +26,7 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
     @Override
     public int[] getAcceptableTokens() {
-        return new int[]{TokenTypes.METHOD_DEF, TokenTypes.CTOR_DEF, TokenTypes.CTOR_CALL, TokenTypes.METHOD_CALL};
+        return new int[] {TokenTypes.METHOD_DEF, TokenTypes.CTOR_DEF, TokenTypes.CTOR_CALL, TokenTypes.METHOD_CALL};
     }
 
     @Override
@@ -46,7 +44,7 @@ public class MethodParameterNumberCheck extends AbstractCheck {
             DetailAST params = ast.findFirstToken(TokenTypes.PARAMETERS);
             int count = params.getChildCount(TokenTypes.PARAMETER_DEF);
 
-            if (count >= max) {
+            if (count >= DEFAULT_MAX_PARAMETERS) {
 
                 DetailAST firstToken = params.findFirstToken(TokenTypes.PARAMETER_DEF);
                 DetailAST secondSibling = firstToken.getNextSibling();
@@ -67,12 +65,10 @@ public class MethodParameterNumberCheck extends AbstractCheck {
 
                     firstToken = secondSibling;
                     secondSibling = firstToken.getNextSibling();
-
                 }
 
                 //check if the first left parenthesis is not on the same line with the parameter listing
                 if (rightParentToken.getLineNo() == firstToken.getLineNo()) {
-
                     log(rightParentToken, RIGHT_PAREN_PARAMETER_MSG_KEY);
                 }
             }

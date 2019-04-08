@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import static com.intellij.codeInsight.daemon.impl.FileStatusMap.log;
@@ -40,9 +41,11 @@ public class CodeStyleManager {
         String configPath = PathManager.getConfigPath();
         createFolder(configPath + "/codestyles");
         String targetPath = configPath + "/codestyles";
-        try (InputStream resourceAsStream = getClass().getResourceAsStream("/META-INF/file/checkstyle.xml")) {
+        try (
+            InputStream resourceAsStream = getClass()
+                .getResourceAsStream("/META-INF/file/checkstyle.xml")
+        ) {
             copyFile(resourceAsStream, targetPath);
-
         } catch (Exception e) {
             log("CheckStyle.xml File Copy Error", e.getMessage());
         }
@@ -51,15 +54,21 @@ public class CodeStyleManager {
 
     private static void copyFile(InputStream sourceURL, String targetDirectory) {
         try {
-
-            Path targetPath = new File(targetDirectory + File.separator + "checkstyle.xml").toPath();
-
+            Path targetPath = Paths.get(targetDirectory, "checkstyle.xml");
             Files.copy(sourceURL, targetPath, StandardCopyOption.REPLACE_EXISTING);
-            Notifications.Bus.notify(new Notification("io.vivy.idea.checkstyle", "Copying checkstyle file", "File copied to IDE",NotificationType.INFORMATION));
+            Notifications.Bus.notify(new Notification(
+                "io.vivy.idea.checkstyle",
+                "Copying checkstyle file",
+                "File copied to IDE",
+                NotificationType.INFORMATION
+            ));
         } catch (Exception e) {
-            Notifications.Bus.notify(new Notification("io.vivy.idea.checkstyle", "Error occur while copying xml file", e.getMessage(), NotificationType.ERROR));
+            Notifications.Bus.notify(new Notification(
+                "io.vivy.idea.checkstyle",
+                "Error occur while copying xml file",
+                e.getMessage(),
+                NotificationType.ERROR
+            ));
         }
     }
-
-
 }
