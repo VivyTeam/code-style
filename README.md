@@ -46,3 +46,7 @@ Adapt your ` build.gradle ` file to the following structure : This should fail b
 * Preferences-> Other Settings -> Checkstyle 
   * **Third PartyChecks -> + -> /path/to/custom-checkstyle.jar**
   * **Configuration -> + -> link_from_above_to_checkstyle_config**
+ 
+Or as a screenshot: 
+
+![Checkstyle Idea Configuration](docs/CheckstyleConfigurationIdea.png?raw=true "Checkstyle Configuration")
