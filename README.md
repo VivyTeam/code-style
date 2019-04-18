@@ -58,3 +58,22 @@ Adapt your ` build.gradle ` file to the following structure : This should fail b
 Or as a screenshot: 
 
 ![Checkstyle Idea Configuration](docs/CheckstyleConfigurationIdea.png?raw=true "Checkstyle Configuration")
+
+
+### TO BE IMPLEMENTED:
+
+#### DONT:
+
+```java
+.flatMap(
+    item -> action(item)
+            .flatMap(something())
+);
+```
+
+#### DO
+```java
+.flatMap(item -> action(item)
+            .flatMap(something())
+);
+```
