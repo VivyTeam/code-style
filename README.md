@@ -77,3 +77,27 @@ Or as a screenshot:
             .flatMap(something())
 );
 ```
+----
+
+#### DONT
+
+```java
+return Mono.fromCompletionStage(() -> dynamoDb.query(request))
+        .doOnError(DynamoDbException.class,
+                e -> ContextLogger.of(log).event("get_kbv_mobile_email")
+                        .with("kbv_email_id", kbvEmailId)
+                        .warn(e))
+
+```
+
+#### DO
+
+```java
+return Mono.fromCompletionStage(() -> dynamoDb.query(request))
+        .doOnError(DynamoDbException.class, e -> ContextLogger.of(log)
+                .event("get_email")
+                .with("id", id)
+                .warn(e)
+        )
+
+```
