@@ -101,3 +101,49 @@ return Mono.fromCompletionStage(() -> dynamoDb.query(request))
         )
 
 ```
+
+
+### DONT
+
+```java
+.insurance(
+    Optional.of(
+        UserEvent.UserData.Insurance.builder()
+            .insuranceNumber("insuranceNumber")
+            .build()
+))
+```
+
+### DO
+
+```java
+.insurance(Optional.of(
+    UserEvent.UserData.Insurance.builder()
+            .insuranceNumber("insuranceNumber")
+            .build()
+))
+```
+
+### DONT
+
+```java
+.doOnError(DynamoDbException.class,
+    e -> ContextLogger.of(log)
+```
+
+
+### DO
+
+```java
+.doOnError(
+    DynamoDbException.class,
+    e -> ContextLogger.of(log)
+```
+
+or
+
+```java
+.doOnError(
+    DynamoDbException.class, e -> ContextLogger.of(log)
+    //...
+```
