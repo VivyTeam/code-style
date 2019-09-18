@@ -71,6 +71,15 @@ Or as a screenshot:
 );
 ```
 
+or 
+
+```java
+.flatMap(item -> 
+      action(item)
+         .flatMap(something())
+);
+```
+
 #### DO
 ```java
 .flatMap(item -> action(item)
