@@ -48,9 +48,11 @@ Adapt your ` build.gradle ` file to the following structure : This should fail b
 1. First of all you need to install `CheckStyle-IDEA Plugin`. 
 
 2. Secondly you need to download latest release of vivy checks from here: 
-[latest release](https://github.com/VivyTeam/code-style/releases/latest). 
+[latest release](https://github.com/VivyTeam/code-style/releases/latest).
 
-3. Now you need to add vivy-checkstyle to idea. 
+3. Set the `Checkstyle version` to `8.18`
+
+4. Now you need to add vivy-checkstyle to idea. 
 * Preferences-> Other Settings -> Checkstyle 
   * **Third PartyChecks -> + -> /path/to/custom-checkstyle.jar**
   * **Configuration -> + -> link_from_above_to_checkstyle_config**
