@@ -149,6 +149,7 @@ return Mono.fromCompletionStage(() -> dynamoDb.query(request))
 .doOnError(
     DynamoDbException.class,
     e -> ContextLogger.of(log)
+)
 ```
 
 or
