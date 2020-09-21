@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '0.4.19'
+    id 'org.jetbrains.intellij' version '0.4.26'
 }
 
 sourceCompatibility = 1.8
