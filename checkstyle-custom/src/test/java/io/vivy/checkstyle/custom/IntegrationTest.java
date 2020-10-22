@@ -8,14 +8,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MethodCallParenShouldMatch {
+public class IntegrationTest {
 
     TestGenericFunctions genericFunction = new TestGenericFunctions();
 
     @Test
-    void checkThatMethodCallParenMatches() throws Exception {
-        Checker checker = genericFunction.prepareCheckStyleChecker(MethodCallParenMatchCheck.class);
-        List<File> files = genericFunction.prepareFilesToBeChecked("TestMethodCallParenMatchCheckErrors.java");
+    void shouldWorkWithSwitchExpression() throws Exception {
+        Checker checker = genericFunction.prepareCheckStyleChecker(MethodParameterNumberCheck.class);
+        List<File> files = genericFunction.prepareFilesToBeChecked("TestSwitchExpression.java");
         int numberOfErrors = checker.process(files);
         assertEquals(0, numberOfErrors);
     }

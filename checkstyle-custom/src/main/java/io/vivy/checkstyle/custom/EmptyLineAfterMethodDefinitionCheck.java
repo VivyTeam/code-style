@@ -33,7 +33,7 @@ public class EmptyLineAfterMethodDefinitionCheck extends AbstractCheck {
         if (statementStart != null) {
             DetailAST curlyToken = statementStart.findFirstToken(TokenTypes.RCURLY);
             if (ast.getType() == TokenTypes.METHOD_DEF || ast.getType() == TokenTypes.CTOR_DEF) {
-                int nextLine = statementStart.getLine();
+                int nextLine = statementStart.getLineNo();
                 if (nextLine <= curlyToken.getLineNo()) {
                     String getNextLine = getLine(statementStart.getLineNo());
                     if (CommonUtil.isBlank(getNextLine.trim())) {

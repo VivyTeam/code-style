@@ -1,9 +1,9 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
-sourceCompatibility = 1.8
+targetCompatibility = sourceCompatibility = 8
 
 dependencies {
-    compile 'com.puppycrawl.tools:checkstyle'
+    implementation 'com.puppycrawl.tools:checkstyle:8.36.2'
 }
