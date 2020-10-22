@@ -2,9 +2,6 @@ plugins {
     id 'java-library'
 }
 
-group = "com.vivy.code"
-version = "master-SNAPSHOT"
-
 targetCompatibility = sourceCompatibility = JavaVersion.VERSION_11
 
 jar {

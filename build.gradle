@@ -1,9 +1,25 @@
 allprojects {
     apply plugin: 'java'
+    apply plugin: 'maven-publish'
 
     repositories {
         jcenter()
         maven { url 'https://jitpack.io' }
+    }
+
+    java {
+        withSourcesJar()
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+            }
+        }
+    }
+
+    task install(dependsOn: tasks.publishToMavenLocal) {
     }
 }
 
