@@ -37,10 +37,15 @@ public class SingleArgsLambdaSameLineCheck extends AbstractCheck {
     @Override
     public void visitToken(DetailAST ast) {
         if (ast.getType() == TokenTypes.LAMBDA) {
-            DetailAST firstChild = ast.getFirstChild();
-            DetailAST secondChild = firstChild.getNextSibling();
+            DetailAST expression;
 
-            if (secondChild != null && (secondChild.getText().equals("EXPR"))) {
+            if (ast.getFirstChild() == null) {
+                expression = ast.getNextSibling();
+            } else {
+                expression = ast.getFirstChild().getNextSibling();
+            }
+
+            if (expression != null && expression.getText().equals("EXPR")) {
                 int columnNo = ast.getColumnNo();
                 int lineNo = ast.getLineNo();
                 String currentLine = getLine(lineNo - 1);
