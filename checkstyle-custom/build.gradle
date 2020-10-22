@@ -2,7 +2,10 @@ plugins {
     id 'java-library'
 }
 
-targetCompatibility = sourceCompatibility = 8
+group = "com.vivy.code"
+version = "master-SNAPSHOT"
+
+targetCompatibility = sourceCompatibility = JavaVersion.VERSION_11
 
 dependencies {
     implementation 'com.puppycrawl.tools:checkstyle:8.36.2'

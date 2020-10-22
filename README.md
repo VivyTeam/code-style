@@ -1,17 +1,20 @@
 # How to enable Checkstyle in your project
 
-Add checkstyle config from [Checkstyle XML File](/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml)
+Add checkstyle config from [Checkstyle XML File](/checkstyle/checkstyle.xml)
 
 
 ## Configure build.gradle
 
-Adapt your ` build.gradle ` file to the following structure : This should fail build operation if there exists codestyles adherence error(s).
+Adapt your `build.gradle` file to the following structure: 
+
+> NOTE: This should fail build operation if there exists code styles adherence error(s).
+>
 ```gradle
    allprojects {
       apply plugin: 'checkstyle'
 
       checkstyle {
-         config project.resources.text.fromUri('https://raw.githubusercontent.com/VivyTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
+         config resources.text.fromUri('https://raw.githubusercontent.com/VivyTeam/code-style/master/checkstyle/checkstyle.xml')
          
          // To disable in tests. We generally appreciate tests aligned with checkstyle, 
          // but that's not mandatory in some cases
@@ -28,7 +31,7 @@ Adapt your ` build.gradle ` file to the following structure : This should fail b
          
                // Other dependencies...
                
-               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.1.0'
+               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.1.2'
          }
       }
    }
@@ -42,6 +45,8 @@ Adapt your ` build.gradle ` file to the following structure : This should fail b
    }
     
 ``` 
+
+> **NOTE:** Config in `vivy-idea-plugin` resources deprecated and replaced during the build with `/checkstyle/*`
 
 ## Adjust Idea
 

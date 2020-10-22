@@ -4,17 +4,23 @@ plugins {
     id 'org.jetbrains.intellij' version '0.4.19'
 }
 
-sourceCompatibility = 8
+sourceCompatibility = JavaVersion.VERSION_11
 
 intellij {
     version '2018.2.1'
 }
 
 checkstyle {
-    config project.resources.text.fromUri('https://raw.githubusercontent.com/VivyTeam/code-style/master/vivy-idea-plugin/src/main/resources/META-INF/file/checkstyle.xml')
+//    config project.resources.text.fromUri('https://raw.githubusercontent.com/VivyTeam/code-style/master/checkstyle/checkstyle.xml')
+    config rootProject.resources.text.fromFile("checkstyle/checkstyle.xml")
+}
+
+jar {
+    from ("${rootDir}/checkstyle/") {
+        into ("META-INF/file")
+    }
 }
 
 dependencies {
-//    checkstyle project(":checkstyle-custom")
-    checkstyle "com.github.VivyTeam.code-style:checkstyle-custom:1.1.0"
+    checkstyle project(":checkstyle-custom")
 }
