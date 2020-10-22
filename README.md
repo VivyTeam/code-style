@@ -7,8 +7,8 @@ Add checkstyle config from [Checkstyle XML File](/checkstyle/checkstyle.xml)
 
 Adapt your `build.gradle` file to the following structure: 
 
-> NOTE: This should fail build operation if there exists code styles adherence error(s).
->
+> NOTE: This would fail a build in case of code style errors.
+
 ```gradle
    allprojects {
       apply plugin: 'checkstyle'
@@ -31,7 +31,7 @@ Adapt your `build.gradle` file to the following structure:
          
                // Other dependencies...
                
-               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.1.2'
+               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.1.3'
          }
       }
    }
@@ -43,8 +43,20 @@ Adapt your `build.gradle` file to the following structure:
             checkstyle 'com.github.VivyTeam.code-style:checkstyle-custom'
         }
    }
-    
 ``` 
+
+As alternative to direct url, config of the specific version could be obtained from jar. 
+Then checkstyle configuration should be defined in the module _after_ dependency definitions:
+
+```gradle
+dependencies {
+    //...
+}
+
+checkstyle {
+    config resources.text.fromArchiveEntry(configurations.checkstyle.first(), "config/checkstyle.xml")
+}
+```
 
 > **NOTE:** Config in `vivy-idea-plugin` resources deprecated and replaced during the build with `/checkstyle/*`
 

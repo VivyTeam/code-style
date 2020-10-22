@@ -7,6 +7,12 @@ version = "master-SNAPSHOT"
 
 targetCompatibility = sourceCompatibility = JavaVersion.VERSION_11
 
+jar {
+    from("${rootDir}/checkstyle/") {
+        into("config")
+    }
+}
+
 dependencies {
     implementation 'com.puppycrawl.tools:checkstyle:8.36.2'
 }

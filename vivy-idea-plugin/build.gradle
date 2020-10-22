@@ -10,17 +10,20 @@ intellij {
     version '2018.2.1'
 }
 
+dependencies {
+    checkstyle project(":checkstyle-custom")
+}
+
 checkstyle {
-//    config project.resources.text.fromUri('https://raw.githubusercontent.com/VivyTeam/code-style/master/checkstyle/checkstyle.xml')
-    config rootProject.resources.text.fromFile("checkstyle/checkstyle.xml")
+    // config resources.text.fromUri('https://raw.githubusercontent.com/VivyTeam/code-style/master/checkstyle/checkstyle.xml')
+    // config rootProject.resources.text.fromFile("checkstyle/checkstyle.xml")
+
+    // requires to be after dependencies definition in the module
+    config resources.text.fromArchiveEntry(configurations.checkstyle.first(), "config/checkstyle.xml")
 }
 
 jar {
-    from ("${rootDir}/checkstyle/") {
-        into ("META-INF/file")
+    from("${rootDir}/checkstyle/") {
+        into("META-INF/file")
     }
-}
-
-dependencies {
-    checkstyle project(":checkstyle-custom")
 }
