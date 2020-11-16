@@ -31,7 +31,7 @@ Adapt your `build.gradle` file to the following structure:
          
                // Other dependencies...
                
-               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.1.6'
+               dependency 'com.vivy.code-style:checkstyle-custom:1.1.6'
          }
       }
    }
@@ -40,7 +40,7 @@ Adapt your `build.gradle` file to the following structure:
 
    subprojects {
         dependencies {
-            checkstyle 'com.github.VivyTeam.code-style:checkstyle-custom'
+            checkstyle 'com.vivy.code-style:checkstyle-custom'
         }
    }
 ``` 
