@@ -66,8 +66,11 @@ checkstyle {
 
 1. First of all you need to install `CheckStyle-IDEA Plugin`. 
 
-2. Secondly you need to download latest release of vivy checks from here: 
+2. Secondly you need to download
 [latest release](https://github.com/VivyTeam/code-style/releases/latest).
+
+of vivy checks from here: 
+https://jitpack.io/com/github/VivyTeam/code-style/checkstyle-custom/1.1.6/checkstyle-custom-1.1.6.jar
 
 3. Set the `Checkstyle version` to the latest available version
 
