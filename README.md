@@ -31,7 +31,7 @@ Adapt your `build.gradle` file to the following structure:
          
                // Other dependencies...
                
-               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.1.5'
+               dependency 'com.github.VivyTeam.code-style:checkstyle-custom:1.1.6'
          }
       }
    }
@@ -62,12 +62,14 @@ checkstyle {
 
 ## Adjust Idea
 
+**WARN** untested with the latest release, could be outdated
+
 1. First of all you need to install `CheckStyle-IDEA Plugin`. 
 
 2. Secondly you need to download latest release of vivy checks from here: 
 [latest release](https://github.com/VivyTeam/code-style/releases/latest).
 
-3. Set the `Checkstyle version` to `8.18`
+3. Set the `Checkstyle version` to the latest available version
 
 4. Now you need to add vivy-checkstyle to idea. 
 * Preferences-> Other Settings -> Checkstyle 
