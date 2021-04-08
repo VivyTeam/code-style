@@ -60,29 +60,32 @@ checkstyle {
 
 > **NOTE:** Config in `vivy-idea-plugin` resources deprecated and replaced during the build with `/checkstyle/*`
 
-## Adjust Idea
+## Adjust IntelliJ IDEA
 
 **WARN** untested with the latest release, could be outdated
 
 1. First of all you need to install `CheckStyle-IDEA Plugin`. 
 
 2. Secondly you need to download
-[latest release](https://github.com/VivyTeam/code-style/releases/latest).
-
+[latest release](https://github.com/VivyTeam/code-style/releases/latest)
 of vivy checks from here: 
 https://jitpack.io/com/github/VivyTeam/code-style/checkstyle-custom/1.1.6/checkstyle-custom-1.1.6.jar
 
-3. Set the `Checkstyle version` to the latest available version
-
-4. Now you need to add vivy-checkstyle to idea. 
-* Preferences-> Other Settings -> Checkstyle 
+3. Now you need to add vivy-checkstyle to idea. 
+* Preferences-> Other Settings -> Checkstyle
   * **Third PartyChecks -> + -> /path/to/custom-checkstyle.jar**
   * **Configuration -> + -> link_from_above_to_checkstyle_config**
+  * Set the `Checkstyle version` to the latest available version
  
 Or as a screenshot: 
 
 ![Checkstyle Idea Configuration](docs/CheckstyleConfigurationIdea.png?raw=true "Checkstyle Configuration")
 
+**WARN** For a newer versions of IntelliJ IDEA find checkstyle settings here: 
+
+Preferences-> Tools -> Checkstyle
+
+![Checkstyle Idea Configuration](docs/CheckstyleConfigurationIdea_2020_3.png?raw=true "Checkstyle Configuration")
 
 ### TO BE IMPLEMENTED:
 
