@@ -1,0 +1,35 @@
+version: 2
+registries:
+  maven-repository-maven-pkg-github-com-vivyteam-packages:
+    type: maven-repository
+    url: https://maven.pkg.github.com/VivyTeam/Packages
+    username: VivyPackages
+    password: "${{secrets.MAVEN_REPOSITORY_MAVEN_PKG_GITHUB_COM_VIVYTEAM_PACKAGES_PASSWORD}}"
+
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+    timezone: Europe/Berlin
+  open-pull-requests-limit: 8
+  ignore:
+  - dependency-name: com.puppycrawl.tools:checkstyle
+    versions:
+    - "8.39"
+    - "8.40"
+    - "8.41"
+    - 8.41.1
+  - dependency-name: org.jetbrains.intellij
+    versions:
+    - 0.6.5
+    - 0.7.0
+    - 0.7.1
+    - 0.7.2
+  - dependency-name: org.junit:junit-bom
+    versions:
+    - 5.7.0
+  rebase-strategy: disabled
+  registries:
+  - maven-repository-maven-pkg-github-com-vivyteam-packages
