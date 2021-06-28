@@ -11,5 +11,5 @@ jar {
 }
 
 dependencies {
-    implementation 'com.puppycrawl.tools:checkstyle:8.36.2'
+    implementation 'com.puppycrawl.tools:checkstyle:8.44'
 }
